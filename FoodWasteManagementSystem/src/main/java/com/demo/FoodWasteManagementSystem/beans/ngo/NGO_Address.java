@@ -1,11 +1,14 @@
 package com.demo.FoodWasteManagementSystem.beans.ngo;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class NGO_Address {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int ngo_aid;
 	private String street;
 	private String city;

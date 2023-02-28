@@ -8,6 +8,8 @@ public interface NGOService {
 
 	List<NGO> getAllNgos();
 
-	int addNewNgo();
+	
+
+	void addNewNgo(NGO ngo);
 
 }

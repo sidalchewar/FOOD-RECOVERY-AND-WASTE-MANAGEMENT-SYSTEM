@@ -22,10 +22,10 @@ public class NGOServiceImpl implements NGOService{
 		return ngo_dao.findAll();
 	}
 
-	@Override
-	public int addNewNgo() {
-		// TODO Auto-generated method stub
-		return 0;
+	
+	public void addNewNgo(NGO ngo) {
+		
+		ngo_dao.save(ngo);
 	}
 
 	
