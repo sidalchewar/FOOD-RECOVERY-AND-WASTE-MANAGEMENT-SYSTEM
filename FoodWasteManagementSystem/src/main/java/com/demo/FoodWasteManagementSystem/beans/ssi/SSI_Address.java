@@ -1,4 +1,4 @@
-package com.demo.FoodWasteManagementSystem.beans.ngo;
+package com.demo.FoodWasteManagementSystem.beans.ssi;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,33 +6,33 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class NGO_Address {
+public class SSI_Address {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int ngo_aid;
+	@GeneratedValue
+	private int ssi_aid;
 	private String street;
 	private String city;
 	private String district;
 	private String state;
 	private int pin;
-	public NGO_Address() {
+	public SSI_Address() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public NGO_Address(int ngo_aid, String street, String city, String district, String state, int pin) {
+	public SSI_Address(int ssi_aid, String street, String city, String district, String state, int pin) {
 		super();
-		this.ngo_aid = ngo_aid;
+		this.ssi_aid = ssi_aid;
 		this.street = street;
 		this.city = city;
 		this.district = district;
 		this.state = state;
 		this.pin = pin;
 	}
-	public int getNgo_AId() {
-		return ngo_aid;
+	public int getSsi_aid() {
+		return ssi_aid;
 	}
-	public void setNgo_AId(int ngo_AId) {
-		this.ngo_aid = ngo_AId;
+	public void setSsi_aid(int ssi_aid) {
+		this.ssi_aid = ssi_aid;
 	}
 	public String getStreet() {
 		return street;
@@ -66,13 +66,8 @@ public class NGO_Address {
 	}
 	@Override
 	public String toString() {
-		return "NGO_Address [ngo_aid=" + ngo_aid + ", street=" + street + ", city=" + city + ", district=" + district
+		return "SSI_Address [ssi_aid=" + ssi_aid + ", street=" + street + ", city=" + city + ", district=" + district
 				+ ", state=" + state + ", pin=" + pin + "]";
 	}
 	
-	
-	
-	
-	
-
 }
