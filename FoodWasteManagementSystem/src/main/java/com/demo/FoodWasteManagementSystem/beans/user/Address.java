@@ -3,7 +3,10 @@ package com.demo.FoodWasteManagementSystem.beans.user;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
+@Table(name = "User_Address")
 public class Address
 {  @Id
    @GeneratedValue
