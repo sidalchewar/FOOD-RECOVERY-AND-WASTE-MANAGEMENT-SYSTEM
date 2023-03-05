@@ -40,10 +40,10 @@ public class SSI_Controller {
 		
 	}
 	@PostMapping("/register")
-	public SSI addNewSSI(@Valid @RequestBody SSI ssi){
+	public String addNewSSI(@Valid @RequestBody SSI ssi){
 		
 		  ssiservice.addNewSSI(ssi);
-		 return ssi;	
+			return "Data Added Successfully!! ";	
 	}
 	
 	@GetMapping("/login/{username}/{password}")

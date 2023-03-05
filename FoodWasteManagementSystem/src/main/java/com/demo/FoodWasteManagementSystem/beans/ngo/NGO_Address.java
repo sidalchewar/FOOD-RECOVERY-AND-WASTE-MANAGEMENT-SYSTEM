@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class NGO_Address {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue
 	private int ngo_aid;
 	private String street;
 	private String city;
