@@ -7,9 +7,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
+<<<<<<< HEAD
 public class Address{
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
+=======
+@Table(name = "User_Address")
+public class Address
+{  @Id
+   @GeneratedValue
+>>>>>>> f4a005f7e4e73bce52fbef475dc090d51c1577bf
    private int aid;
    private String street;
    private String city;
