@@ -2,11 +2,14 @@ package com.demo.FoodWasteManagementSystem.beans.user;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
 @Entity
-public class Address
-{  @Id
-   @GeneratedValue
+public class Address{
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
    private int aid;
    private String street;
    private String city;
@@ -16,9 +19,9 @@ public class Address
 public Address() {
 	super();
 }
-public Address(String street, String city, String dist, String state, int pin) {
+public Address(int aid,String street, String city, String dist, String state, int pin) {
 	super();
-	
+	this.aid=aid;
 	this.street = street;
 	this.city = city;
 	this.dist = dist;

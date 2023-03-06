@@ -19,9 +19,9 @@ public class NGO_Address {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public NGO_Address(int ngo_AId, String street, String city, String district, String state, int pin) {
+	public NGO_Address(int ngo_aid, String street, String city, String district, String state, int pin) {
 		super();
-		this.ngo_aid = ngo_AId;
+		this.ngo_aid = ngo_aid;
 		this.street = street;
 		this.city = city;
 		this.district = district;
@@ -66,7 +66,7 @@ public class NGO_Address {
 	}
 	@Override
 	public String toString() {
-		return "NGO_Address [ngo_AId=" + ngo_aid + ", street=" + street + ", city=" + city + ", district=" + district
+		return "NGO_Address [ngo_aid=" + ngo_aid + ", street=" + street + ", city=" + city + ", district=" + district
 				+ ", state=" + state + ", pin=" + pin + "]";
 	}
 	

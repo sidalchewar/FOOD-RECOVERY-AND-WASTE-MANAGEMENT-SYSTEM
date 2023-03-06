@@ -2,32 +2,34 @@ package com.demo.FoodWasteManagementSystem.beans.user;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 public class User {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int uid;
 	private String fname;
 	private String lname;
 	private String phone;
 	private String email;
 	private String password;
-	@OneToMany
-	private List<Address> address;
-
 	private int role;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Address> address;
 
 	public User() {
 		super();
 	}
 
-	public User(String fname,String lname,String phone,String email,String pass,List<Address> ad,int r) {
+	public User(String fname,String lname,String phone,String email,String pass,int r,List<Address> ad) {
 		super();
 		
 		this.fname=fname;
@@ -35,8 +37,8 @@ public class User {
 		this.phone=phone;
 		this.email=email;
 		this.password=pass;
-		this.address=ad;
 		this.role=r;
+		this.address=ad;
 	}
 
 

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 
 	@Entity
-	@Table(name="SSI")
+	
 	public class SSI {
 		@Id
 		@GeneratedValue(strategy = GenerationType.AUTO)

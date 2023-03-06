@@ -15,18 +15,20 @@ public class UserServiceImpl implements UserService
 	UserDao dao;
 	
 	@Override
-   public void AddUser(User u) {
-	   
-	   dao.save(u);
-	   
-   }
-
-	@Override
 	public List<User> findAllUser() {
 		
 		return dao.findAll();
 	}
 	
+	@Override
+	 public String addUser(User u) {
+		   
+		   dao.save(u);
+		   
+		  return "Registered Successfully";
+		   
+	   }
+
 	@Override
 	public User getUser(String password,String email) {
 		
@@ -34,7 +36,7 @@ public class UserServiceImpl implements UserService
 		User user=null;
 		for(User u: ulist)
 		{
-			if(u.getEmail().equals(email) && u.getPassword().equals(password))
+			if((u.getPhone().equals(email) || u.getEmail().equals(email)) && u.getPassword().equals(password))
 			{
 				user=u;
 			}

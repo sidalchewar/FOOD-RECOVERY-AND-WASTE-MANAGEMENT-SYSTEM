@@ -12,4 +12,8 @@ public interface NGOService {
 
 	void addNewNgo(NGO ngo);
 
+
+
+	NGO getNgo(String username, String password);
+
 }
