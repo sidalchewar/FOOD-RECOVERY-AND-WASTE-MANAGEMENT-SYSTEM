@@ -30,14 +30,14 @@ public class NGO_Controller {
 	@Autowired
 	NGOService ngoservice;
 	
-	@GetMapping("/displayngobyrole")
-	public ResponseEntity<List<NGO>> displayAll(){
-		//List<NGO> ngolist=ngoservice.getAllNgos();
-		List<NGO> ngolist=new ArrayList<>();
-		NGO_Address address1=new NGO_Address(1,"Paud Mulshi Road","Bavdhan","Pune","Maharashtra",411021);
-		NGO ngo1=new NGO(1,"RESQ Charitable Trust",1,"+91 9892999111","team@resqct.org","11 AM-5 PM","user1","pass1",address1);
-		ngolist.add(ngo1);
-		return ResponseEntity.ok(ngolist);
+	@GetMapping("/ngolist/{role_id}")
+	public List<NGO> displayAll(@PathVariable int role_id){
+		return ngoservice.getAllNgos(role_id);
+//		List<NGO> ngolist=new ArrayList<>();
+//		NGO_Address address1=new NGO_Address(1,"Paud Mulshi Road","Bavdhan","Pune","Maharashtra",411021);
+//		NGO ngo1=new NGO(1,"RESQ Charitable Trust",1,"+91 9892999111","team@resqct.org","11 AM-5 PM","user1","pass1",address1);
+//		ngolist.add(ngo1);
+//		return ngolist;
 		
 	}
 	@PostMapping("/register")

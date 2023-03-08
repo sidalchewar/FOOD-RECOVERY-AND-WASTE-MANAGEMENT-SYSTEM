@@ -18,9 +18,19 @@ public class NGOServiceImpl implements NGOService{
 	NGODao ngo_dao;
 	
 	@Override
-	public List<NGO> getAllNgos() {
+	public List<NGO> getAllNgos(int id) {
 		
-		return ngo_dao.findAll();
+		List<NGO> nlist= ngo_dao.findAll();
+		List<NGO> ngolist=new ArrayList<NGO>();
+		for(NGO ngo:nlist)
+		{
+			if(ngo.getNgo_id()==id)
+			{
+				ngolist.add(ngo);
+			}
+		}
+		
+		return ngolist;
 	}
 
 

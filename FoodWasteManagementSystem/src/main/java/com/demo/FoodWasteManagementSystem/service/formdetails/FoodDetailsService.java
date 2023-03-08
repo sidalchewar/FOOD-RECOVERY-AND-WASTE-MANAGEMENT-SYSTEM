@@ -1,8 +1,9 @@
-package com.demo.FoodWasteManagementSystem.service.fooddetailsform;
+package com.demo.FoodWasteManagementSystem.service.formdetails;
 
 import java.util.List;
 
-import com.demo.FoodWasteManagementSystem.beans.fooddetailsform.FoodDetails;
+import com.demo.FoodWasteManagementSystem.beans.formdetails.FoodDetails;
+
 
 public interface FoodDetailsService {
 
@@ -10,21 +11,27 @@ public interface FoodDetailsService {
 
 	String addnewFoodDetails(FoodDetails fooddetails);
 
-	FoodDetails getreqlist(int id);
+	List<FoodDetails> getreqlist(int id);
 
-	FoodDetails getreqlistconfirm(int id);
+	String getreqlistconfirm(int id);
+	
+	String getreqlistreject(int id);
 
-	FoodDetails getconlist(int user_id);
+	List<FoodDetails> getconlist(int user_id);
 
-	FoodDetails DisplayReqListToNgo(int id);
+	List<FoodDetails> DisplayReqListToNgo(int id);
 
-	FoodDetails DisplayConListToNgo(int id);
+	List<FoodDetails> DisplayConListToNgo(int id);
 
-	FoodDetails GetreqlistconfirmBySsi(int id);
+	String GetreqlistconfirmBySsi(int id);
+	
+	String GetreqlistRejectBySsi(int id);
 
-	FoodDetails DisplayReqListToSsi(int id);
+	List<FoodDetails> DisplayReqListToSsi(int id);
 
-	FoodDetails DisplayConListToSsi(int id);
+	List<FoodDetails> DisplayConListToSsi(int id);
+
+
 
 	
 

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name ="FoodDetails")
+@Table(name ="Food_Details")
 public class FoodDetails {
 	
 	@Id
@@ -27,7 +27,9 @@ public class FoodDetails {
 	private String ngo_name;
 	private int ssi_id;
 	private String ssi_name;
+	private String ssi_contact;
 	private String status;
+	private String ngo_contact;
 	
 	public FoodDetails() {
 		super();
@@ -35,7 +37,7 @@ public class FoodDetails {
 
 	public FoodDetails(int food_id, String food_items, int feed_count, String feed_qty, int food_quality_in_days,
 			int user_id, String user_name, String user_address, String user_contact, int ngo_id, String ngo_name,
-			int ssi_id, String ssi_name, String status) {
+			int ssi_id, String ssi_name, String status,String ssi_contact,String ngo_contact) {
 		super();
 		this.food_id = food_id;
 		this.food_items = food_items;
@@ -48,45 +50,14 @@ public class FoodDetails {
 		this.user_contact = user_contact;
 		this.ngo_id = ngo_id;
 		this.ngo_name = ngo_name;
+		this.ngo_contact=ngo_contact;
 		this.ssi_id = ssi_id;
 		this.ssi_name = ssi_name;
+		this.ssi_contact=ssi_contact;
+		
 		this.status = status;
+		
 	}
-
-	public FoodDetails(int food_id,String food_items, int feed_count, int food_quality_in_days, int user_id,String user_name,
-			String user_address, String user_contact,int ngo_id, String ngo_name,
-			String status) {
-		super();
-		this.food_id= food_id;
-		this.food_items = food_items;
-		this.feed_count = feed_count;
-		this.food_quality_in_days = food_quality_in_days;
-		this.user_id = user_id;
-		this.user_name = user_name;
-		this.user_address = user_address;
-		this.user_contact = user_contact;
-		this.ngo_id = ngo_id;
-		this.ngo_name = ngo_name;
-		this.status = status;
-	}
-	
-	public FoodDetails(int food_id,String food_items, String feed_qty, int food_quality_in_days,int user_id, String user_name,
-			String user_address, String user_contact,int ssi_id ,String ssi_name,
-			String status) {
-		super();
-		this.food_id= food_id;
-		this.food_items = food_items;
-		this.feed_qty = feed_qty;
-		this.food_quality_in_days = food_quality_in_days;
-		this.user_id = user_id;
-		this.user_name = user_name;
-		this.user_address = user_address;
-		this.user_contact = user_contact;
-		this.ssi_id = ssi_id;
-		this.ssi_name = ssi_name;
-	    this.status = status;
-	}
-
 
 	public int getFood_id() {
 		return food_id;
@@ -114,6 +85,14 @@ public class FoodDetails {
 
 	public String getFeed_qty() {
 		return feed_qty;
+	}
+
+	public String getSsi_contact() {
+		return ssi_contact;
+	}
+
+	public void setSsi_contact(String ssi_contact) {
+		this.ssi_contact = ssi_contact;
 	}
 
 	public void setFeed_qty(String feed_qty) {
@@ -199,6 +178,16 @@ public class FoodDetails {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	
+	
+
+	public String getContact() {
+		return ngo_contact;
+	}
+
+	public void setContact(String contact) {
+		this.ngo_contact = contact;
+	}
 
 	@Override
 	public String toString() {
@@ -206,16 +195,7 @@ public class FoodDetails {
 				+ ", feed_qty=" + feed_qty + ", food_quality_in_days=" + food_quality_in_days + ", user_id=" + user_id
 				+ ", user_name=" + user_name + ", user_address=" + user_address + ", user_contact=" + user_contact
 				+ ", ngo_id=" + ngo_id + ", ngo_name=" + ngo_name + ", ssi_id=" + ssi_id + ", ssi_name=" + ssi_name
-				+ ", status=" + status + "]";
+				+ ", ssi_contact=" + ssi_contact + ", status=" + status + ", contact=" + ngo_contact + "]";
 	}
-
-
-
-
-
-	
-	
-	
-	
 
 }

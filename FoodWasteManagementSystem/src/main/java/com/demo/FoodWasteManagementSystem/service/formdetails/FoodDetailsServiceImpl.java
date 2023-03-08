@@ -1,13 +1,15 @@
-package com.demo.FoodWasteManagementSystem.service.fooddetailsform;
+package com.demo.FoodWasteManagementSystem.service.formdetails;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.demo.FoodWasteManagementSystem.beans.fooddetailsform.FoodDetails;
-import com.demo.FoodWasteManagementSystem.Dao.fooddetailsform.FoodDetailsDao;
+import com.demo.FoodWasteManagementSystem.beans.formdetails.FoodDetails;
+import com.demo.FoodWasteManagementSystem.dao.formdetails.FoodDetailsDao;
+
 
 @Service
 public class FoodDetailsServiceImpl implements FoodDetailsService {
@@ -32,32 +34,51 @@ public class FoodDetailsServiceImpl implements FoodDetailsService {
 
 
 	//This is for user request list when user click on request button 
-	public FoodDetails getreqlist(int id) {
+	public List<FoodDetails> getreqlist(int id) {
 
 		List<FoodDetails> flist=dao.findAll();
 
-		FoodDetails fooddetails=null;
+		List<FoodDetails> fooddetails=new ArrayList<FoodDetails>();
+		if(flist!=null)
+		{
+
 		for(FoodDetails fd:flist) {
-			if(fd.getuser_id()==id && fd.getStatus().equals("pending")) {
-				fooddetails=fd;
+			if(fd.getUser_id()==id && fd.getStatus().equals("pending")) {
+				fooddetails.add(fd);
 			}
 
+		}
+		}
+		else
+		{
+			return null;
 		}
 		return fooddetails;
 	}
 	//This is for user to check the confirm list which he send to respective ngo.
 	@Override
-	public FoodDetails getconlist(int id) {
+	public List<FoodDetails> getconlist(int id) {
 
 		List<FoodDetails> flist=dao.findAll();
-
-		FoodDetails fooddetails=null;
-		for(FoodDetails fd:flist) {
-			if(fd.getuser_id()==id && fd.getStatus().equals("confirmed")) {
-				fooddetails=fd;
+		List<FoodDetails> fooddetails=new ArrayList<FoodDetails>();
+	if(flist!=null)
+	{
+		for(FoodDetails fd:flist)
+		{
+			if(fd.getUser_id()==id && (fd.getStatus().equals("accepted") || fd.getStatus().equals("rejected")))
+			{
+				fooddetails.add(fd);
 			}
-
+	     }
+		
+	}
+		else
+		{
+			return null;
 		}
+
+	if(fooddetails.isEmpty())
+		return null;
 		return fooddetails;
 	}
 
@@ -65,50 +86,87 @@ public class FoodDetailsServiceImpl implements FoodDetailsService {
 
 	//==========================================================================================================
 
-	//this is for ngo to accept the request and set the status
+	// for ngo 
 	@Override
-	public FoodDetails getreqlistconfirm(int id) {
-
-		List<FoodDetails> fdlist=dao.findAll();
-		FoodDetails fooddetails=null;
-		for(FoodDetails fdd:fdlist) {
-			if(fdd.getNgo_id()==id) {
-
-				fdd.setStatus("confirmed");
-				dao.save(fdd);
-				fooddetails=fdd;
-			}
-		}
-		return fooddetails;
-	}
-
-
-
-	@Override
-	public FoodDetails DisplayReqListToNgo(int id) {
+	public List<FoodDetails> DisplayReqListToNgo(int id) {
 		List<FoodDetails> flist=dao.findAll();
 
-		FoodDetails fooddetails=null;
+		List<FoodDetails> fooddetails=new ArrayList<FoodDetails>();
+		if(flist!=null)
+		{
+
 		for(FoodDetails fd:flist) {
 			if(fd.getNgo_id()==id && fd.getStatus().equals("pending")) {
-				fooddetails=fd;
+				fooddetails.add(fd);
 			}
 
 		}
+		}
+		else
+		{
+			return null;
+		}
+		if(fooddetails.isEmpty())
+		{
+			return null;
+		}
 		return fooddetails;
+	}
+	
+	//this is for ngo to accept the request and set the status
+	@Override
+	public String getreqlistconfirm(int id) {
+
+		List<FoodDetails> fdlist=dao.findAll();
+		
+		for(FoodDetails fdd:fdlist) {
+			if(fdd.getFood_id()==id) {
+
+				fdd.setStatus("accepted");
+				dao.save(fdd);
+				return "Confirmed";
+			}
+		}
+		return "Not Found";
+	}
+	
+	//this is for ngo to reject the request and set the status
+	@Override
+	public String getreqlistreject(int id) {
+           
+List<FoodDetails> fdlist=dao.findAll();
+		
+		for(FoodDetails fdd:fdlist) {
+			if(fdd.getFood_id()==id) {
+
+				fdd.setStatus("rejected");
+				dao.save(fdd);
+				return "Rejected";
+			}
+		}
+		return "Not Found";
+
 	}
 
 
 	@Override
-	public FoodDetails DisplayConListToNgo(int id) {
+	public List<FoodDetails> DisplayConListToNgo(int id) {
 		List<FoodDetails> flist=dao.findAll();
 
-		FoodDetails fooddetails=null;
+		List<FoodDetails> fooddetails=new ArrayList<FoodDetails>();
+		if(flist!=null)
+		{
+
 		for(FoodDetails fd:flist) {
-			if(fd.getNgo_id()==id && fd.getStatus().equals("confirmed")) {
-				fooddetails=fd;
+			if(fd.getNgo_id()==id && (fd.getStatus().equals("accepted") || fd.getStatus().equals("rejected"))) {
+				fooddetails.add(fd);
 			}
 
+		}
+		}
+		else
+		{
+			return null;
 		}
 		return fooddetails;
 	}
@@ -120,33 +178,60 @@ public class FoodDetailsServiceImpl implements FoodDetailsService {
 
 	//this functions for ssi to confirm list and check  the status wheather pending or confirmed
 	@Override
-	public FoodDetails GetreqlistconfirmBySsi(int id) {
-		List<FoodDetails> fdlist=dao.findAll();
-		FoodDetails fooddetails=null;
+	public String GetreqlistconfirmBySsi(int id) {
+    List<FoodDetails> fdlist=dao.findAll();
+		
 		for(FoodDetails fdd:fdlist) {
-			if(fdd.getSsi_id()==id) {
+			if(fdd.getFood_id()==id) {
 
-				fdd.setStatus("confirmed");
+				fdd.setStatus("accepted");
 				dao.save(fdd);
-				fooddetails=fdd;
+				return "Confirmed";
 			}
 		}
-		return fooddetails;
+		return "Not Found";
 	}
 
 
+	//this functions for ssi to reject list and check  the status wheather pending or confirmed
+		@Override
+		public String GetreqlistRejectBySsi(int id) {
+	    List<FoodDetails> fdlist=dao.findAll();
+			
+			for(FoodDetails fdd:fdlist) {
+				if(fdd.getFood_id()==id) {
+
+					fdd.setStatus("rejected");
+					dao.save(fdd);
+					return "Rejected";
+				}
+			}
+			return "Not Found";
+		}
 
 	@Override
-	public FoodDetails DisplayReqListToSsi(int id) {
+	public List<FoodDetails> DisplayReqListToSsi(int id) {
 
 		List<FoodDetails> flist=dao.findAll();
 
-		FoodDetails fooddetails=null;
+		List<FoodDetails> fooddetails=new ArrayList<FoodDetails>();
+		if(flist!=null)
+		{
+
 		for(FoodDetails fd:flist) {
 			if(fd.getSsi_id()==id && fd.getStatus().equals("pending")) {
-				fooddetails=fd;
+				fooddetails.add(fd);
 			}
 
+		}
+		}
+		else
+		{
+			return null;
+		}
+		if(fooddetails.isEmpty())
+		{
+			return null;
 		}
 		return fooddetails;
 	}
@@ -154,18 +239,27 @@ public class FoodDetailsServiceImpl implements FoodDetailsService {
 
 
 	@Override
-	public FoodDetails DisplayConListToSsi(int id) {
+	public List<FoodDetails> DisplayConListToSsi(int id) {
 		List<FoodDetails> flist=dao.findAll();
 
-		FoodDetails fooddetails=null;
+		List<FoodDetails> fooddetails=new ArrayList<FoodDetails>();
+		if(flist!=null)
+		{
+
 		for(FoodDetails fd:flist) {
-			if(fd.getSsi_id()==id && fd.getStatus().equals("confirmed")) {
-				fooddetails=fd;
+			if(fd.getSsi_id()==id && (fd.getStatus().equals("accepted") || fd.getStatus().equals("rejected"))) {
+				fooddetails.add(fd);
 			}
 
 		}
+		}
+		else
+		{
+			return null;
+		}
 		return fooddetails;
 	}
+
 
 
 }

@@ -33,10 +33,14 @@ public class UserServiceImpl implements UserService
 	public User getUser(String password,String email) {
 		
 		List<User> ulist=dao.findAll();
+//		for(User u:ulist)
+//		{
+//			System.out.println(u.getEmail());
+//		}
 		User user=null;
 		for(User u: ulist)
 		{
-			if((u.getPhone().equals(email) || u.getEmail().equals(email)) && u.getPassword().equals(password))
+			if(u.getEmail().equals(email) && u.getPassword().equals(password))
 			{
 				user=u;
 			}
