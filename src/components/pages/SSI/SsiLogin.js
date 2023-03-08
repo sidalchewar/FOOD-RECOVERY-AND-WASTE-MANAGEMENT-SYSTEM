@@ -24,13 +24,13 @@ function UserLogin() {
         axios.get("http://localhost:8000/ssi/login/"+username+"/"+password,config).then((response)=>
         {
             //let [user,setUser]=response.data
-            let user=response.data;
+            let ssi=response.data;
             //console.log(user.lname);
             // setMsg(user.lname);
-            let name=user.ssi_name;
-            if(user!=null)
+            let name=ssi.ssi_name;
+            if(ssi!=null)
             {
-               nav("/ssilogin/home",{state:user});
+               nav("/ssilogin/home",{state:ssi});
             }else{
               setMsg("Invalid username/password")
             }
@@ -45,13 +45,13 @@ function UserLogin() {
     return (
         
   <>
-  <div style={{backgroundColor:"bisque",paddingBlock:"100px"}}>
-  <section class="vh-100" style={{marginLeft:"300px",marginRight:"300px"}}>
+  <div style={{backgroundColor:"bisque",paddingBottom:"100px",paddingTop:"50px",paddingRight:"300px"}}>
+  <section class="vh-100" style={{marginLeft:"100px"}}>
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-6 text-black">
 
-        <div class="px-5 ms-xl-6">
+        <div class="">
           <i class="fas fa-crow fa-2x me-3 pt-5 mt-xl-4" style={{color: "#709085;"}}></i>
           <span class="h1 fw-bold mb-0">Small Scale Industry</span>
         </div>
@@ -79,7 +79,7 @@ function UserLogin() {
             </div>
 
             <Link to="/ssiregister">  <p class="small mb-5 pb-lg-2"><a class="text-muted" href="#!">Forgot password?</a></p></Link>
-            <p>Don't have an account? <a href="#!" class="link-info">Register here</a></p>
+            <p>Don't have an account? <a href="/ssiregister" class="link-info">Register here</a></p>
 
           </form>
 
@@ -88,7 +88,7 @@ function UserLogin() {
       </div>
       <div class="col-sm-6 px-0 d-none d-sm-block">
         <img src={Ngochild}
-          alt="Login image"  style={{objectFit: "cover", objectPosition: "left",width:"600px",height:"800px",paddingTop:"10px"}}/>
+          alt="Login image"  style={{objectFit: "cover", objectPosition: "left",width:"600px",height:"600px",paddingTop:"10px"}}/>
       </div>
     </div>
   </div>

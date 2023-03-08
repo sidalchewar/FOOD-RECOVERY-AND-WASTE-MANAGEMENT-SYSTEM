@@ -15,7 +15,7 @@ function UserRegister() {
     let dist1;
     let state1;
     let pin1;
-    let role1;
+    let role1=1;
     let pass1;
     let pass2;
 
@@ -34,23 +34,15 @@ function UserRegister() {
           phone:phone1,
           email:email1,
           password:pass1,
-<<<<<<< HEAD
           role:role1 ,
-=======
->>>>>>> f4a005f7e4e73bce52fbef475dc090d51c1577bf
           address:[{
           aid:0,
           street:street1,
           city:city1,
           dist:dist1,
           state:state1,
-<<<<<<< HEAD
           pin:pin1}]
           
-=======
-          pin:pin1}],
-          role:role1 
->>>>>>> f4a005f7e4e73bce52fbef475dc090d51c1577bf
           }    
         
         // console.log("sid")
