@@ -1,11 +1,14 @@
 import React,{useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import hungary from "../../images/hungary.jpg"
 import hands from "../../images/hungaryhands.jpg"
+import ContactUs from '../Home/ContactUs';
 
 
 function FoodDetails(props) {
+  let loc=useLocation();
+  let nav=useNavigate();
   let[msg,setMsg]=useState();
   
 
@@ -14,15 +17,15 @@ function FoodDetails(props) {
  let feed_count1;
  let feed_qty1;
  let food_quality_in_days1;
- let user_id1;
- let user_name1;
- let user_address1;
  let user_contact1;
- let ngo_id1;
- let ngo_name1;
- let ssi_id1;
- let ssi_name1;
- let status1;
+//  let user_id1;
+//  let user_name1;
+//  let user_address1;
+//  let ngo_id1;
+//  let ngo_name1;
+//  let ssi_id1;
+//  let ssi_name1;
+//  let status1;
 
      function donate(){
          
@@ -32,28 +35,24 @@ function FoodDetails(props) {
       feed_count:feed_count1,
       feed_qty:feed_qty1,
       food_quality_in_days:food_quality_in_days1,
-      user_id:0,
-      user_name:user_name1,
-      user_address:user_address1,
-      user_contact:user_contact1,
-      ngo_id:0,
-      ngo_name:ngo_name1,
+      user_id:loc.state.user.uid,
+      user_name:loc.state.user.fname+" "+loc.state.user.lname,
+      user_address:loc.state.user.address[0].street+","+loc.state.user.address[0].city+","+loc.state.user.address[0].dist+","+loc.state.user.address[0].state+", Pin-"+loc.state.user.address[0].pin,
+      user_contact:loc.state.user.phone,
+      ngo_id:loc.state.ngodata.ngo_id,
+      ngo_name:loc.state.ngodata.ngo_name,
       ssi_id:null,
       ssi_name:null,
-      status:status1
-      }
-      
+      ssi_contact:null,
+      status:"pending",
+      contact:loc.state.ngodata.ngo_contact
+      }      
       axios.post("http://localhost:8000/fooddetails/addform",data).then((Response)=>{
 
           alert(Response.data);
+          // nav("/userlogin/home");
 
-      });
-
-        
-       
-   
-       
-       
+      });      
  }
     return (
    
@@ -132,7 +131,7 @@ function FoodDetails(props) {
 
                   <div class="form-outline">
                   <label class="form-label" for="username">User name</label>
-                    <input type="email" id="username" class="form-control form-control-lg" onBlur={(e)=>user_name1=e.target.value} />
+                    <input type="email" id="username" class="form-control form-control-lg" value={loc.state.user.fname+" "+loc.state.user.lname} readOnly/>
                 
                   </div>
 
@@ -141,7 +140,7 @@ function FoodDetails(props) {
 
                   <div class="form-outline">
                   <label class="form-label" for="usercontact">User contact</label>
-                    <input type="tel" id="usercontact" class="form-control form-control-lg"  onBlur={(e)=> user_contact1=e.target.value}/>
+                    <input type="tel" id="usercontact" class="form-control form-control-lg"  value={loc.state.user.phone} readOnly/>
                     
                   </div>
 
@@ -153,7 +152,7 @@ function FoodDetails(props) {
                 
                 <div class="form-outline">
                 <label class="form-label" for="useradd">User address</label>
-                    <input type="tel" id="useradd" class="form-control form-control-lg" onBlur={(e)=>user_address1=e.target.value} />
+                    <input type="tel" id="useradd" class="form-control form-control-lg" value={loc.state.user.address[0].street+","+loc.state.user.address[0].city+","+loc.state.user.address[0].dist+","+loc.state.user.address[0].state+", Pin-"+loc.state.user.address[0].pin} readOnly />
                
                   </div>
                   
@@ -165,7 +164,7 @@ function FoodDetails(props) {
                 
                 <div class="form-outline">
                 <label class="form-label" for="ngoname">NGO name</label>
-                    <input type="tel" id="ngoname" class="form-control form-control-lg" onBlur={(e)=>ngo_name1=e.target.value}  />
+                    <input type="tel" id="ngoname" class="form-control form-control-lg" value={loc.state.ngodata.ngo_name} readOnly  />
                    
                   </div>
                   

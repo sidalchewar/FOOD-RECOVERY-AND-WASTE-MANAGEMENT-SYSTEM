@@ -42,7 +42,8 @@ function UserLogin(props) {
     }
     return (
         <>
-        <section class="vh-100" style={{backgroundColor: "#9A616D;",marginBottom:"110px"}} >
+        <div style={{backgroundColor: "#9A616D",paddingBottom:"100px"}}>
+        <section class="vh-100"  >
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-xl-10">
@@ -81,7 +82,7 @@ function UserLogin(props) {
                   </div>
 
                   <a class="small text-muted" href="#!">Forgot password?</a>
-                  <p class="mb-5 pb-lg-2" style={{color: "#393f81;"}}>Don't have an account? <a href="#!"
+                  <p class="mb-5 pb-lg-2" style={{color: "#393f81;"}}>Don't have an account? <a href="/userregister"
                       style={{color: "#393f81;"}}>Register here</a></p>
                 </form>
 
@@ -93,6 +94,7 @@ function UserLogin(props) {
     </div>
   </div>
 </section>
+</div>
         </>
     );
 }

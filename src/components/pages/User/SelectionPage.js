@@ -5,7 +5,9 @@ import Config from '../../Config/config'
 import { useNavigate } from 'react-router';
 function SelectionPage(props) {
 
+    let userdata=props.state;
     let role1=1;
+    
     let nav=useNavigate();
     
     function ngohandler()
@@ -13,7 +15,12 @@ function SelectionPage(props) {
         axios.get("http://localhost:8000/ngo/ngolist/"+role1,Config).then((response)=>
         {
            let lst=response.data;
-           nav("/userlogin/ngolist",{state:lst});
+           let fooddata=
+                {
+                   user:userdata,
+                    ngolist:lst
+                }
+           nav("/userlogin/ngolist",{state:fooddata});
         }).catch(()=>
         {
             alert("Not Found")
@@ -26,7 +33,12 @@ function SelectionPage(props) {
         axios.get("http://localhost:8000/ssi/ssilist/",Config).then((response)=>
         {
            let lst=response.data;
-           nav("/userlogin/ssilist",{state:lst});
+           let fooddata=
+           {
+               user:userdata,
+               ssilist:lst
+           }
+           nav("/userlogin/ssilist",{state:fooddata});
         }).catch(()=>
         {
             alert("Not Found")
@@ -35,6 +47,7 @@ function SelectionPage(props) {
     }
     return (
         <div>
+            <div>{userdata.fname}</div>
               <div style={{marginBottom:"50px"}}>NGO</div>
               <div class="container-fluid">
          <div class="row" style={{marginBottom:"500px"}}>

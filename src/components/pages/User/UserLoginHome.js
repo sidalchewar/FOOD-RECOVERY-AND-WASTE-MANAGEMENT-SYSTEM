@@ -9,7 +9,7 @@ function UserLoginHome() {
     let [us,setUser]=useState();
     useEffect(()=>
     {
-         setUser(user.state.lname);
+         setUser(user.state.fname);
     })
     return (
         <>
@@ -17,7 +17,7 @@ function UserLoginHome() {
             <button style={{float:"right",marginBlock:"10px",marginRight:"50px"}} onClick={()=>nav("/userlogin/acceptedlist",{state:user.state})}>Accepted List</button>
             <button style={{float:"right",marginBlock:"10px",marginRight:"50px"}} onClick={()=>nav("/userlogin/requestlist",{state:user.state})}>Request List</button>
             
-          <SelectionPage></SelectionPage>
+          <SelectionPage state={user.state}></SelectionPage>
         </>
     );
 }

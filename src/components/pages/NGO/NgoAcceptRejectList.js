@@ -2,16 +2,16 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
-function RequestList(props) {
+function NgoAcceptRejectList(props) {
     let loc=useLocation();
     let nav=useNavigate();
     let requestdata;
     let [requestlist,setRequest]=useState();
-    let userid=loc.state.uid;
+    let ngoid=loc.state.ngo_id;
     let [requestfood,setRequestfood]=useState();
     useEffect(()=>
     {
-        axios.get("http://localhost:8000/fooddetails/showreqlist/"+userid).then((response)=>
+        axios.get("http://localhost:8000/fooddetails/confirmlistngo/"+ngoid).then((response)=>
         {
             //   alert(response.data)
               requestdata=response.data;
@@ -19,44 +19,46 @@ function RequestList(props) {
               {
               setRequest(requestdata?.map((data,index)=>
               {
-                if(data.ngo_id!=0)
-                {
+                if(data.status==="accepted")
+                    {
                 return(
+                    
                 <div>
-                    <h5 class="card-header">NGO Name:- {data.ngo_name}</h5>
+                    <h5 class="card-header">User Name:- {data.user_name}</h5>
                 <div class="card-body">
-                    <h5 class="card-title">NGO Contact:- {data.contact}</h5>
+                    <h5 class="card-title">User Contact:- {data.user_contact}</h5>
                     <p class="card-text"><b>Food Details:- </b>{data.food_items}<br/>
                     {data.feed_qty}</p>
-                    <div class="badge badge-success rounded-pill d-inline" style={{backgroundColor:"red"}}>Pending</div>
+                    <div class="badge badge-success rounded-pill d-inline" style={{backgroundColor:"green"}}>Accepted</div>
                 </div>
                 </div>
-            
-            )}
-            else{
-                return(
-                    <div>
-                        <h5 class="card-header">SSI Name:- {data.user_name}</h5>
-                    <div class="card-body">
-                        <h5 class="card-title">SSI Contact:- {data.user_contact}</h5>
-                        <p class="card-text"><b>Food Details:- </b>{data.food_items}<br/>
-                        {data.feed_qty}</p>
-                        <div class="badge badge-success rounded-pill d-inline" style={{backgroundColor:"red"}}>Pending</div>
-                    </div>
-                    </div>
-                )
-            }
-              }))
+                )}
+                else 
+                {
+                    return(
+                        <div>
+                    <h5 class="card-header">User Name:- {data.user_name}</h5>
+                <div class="card-body">
+                    <h5 class="card-title">User Contact:- {data.user_contact}</h5>
+                    <p class="card-text"><b>Food Details:- </b>{data.food_items}<br/>
+                    {data.feed_qty}</p>
+                    <div class="badge badge-success rounded-pill d-inline" style={{backgroundColor:"red"}}>Rejected</div>
+                </div>
+                </div>
+                    )
+                }
+              }
+              ))
             }
             else{
                 setRequest(<center>Empty</center>)
               }
             }).catch(()=>setRequest(<center>Empty</center>))
-            
-    },[])
+        },[])
     return (
         <>
         <div>
+            
             {/* <div>{loc.state.fname}</div>
             <div>{loc.state.uid}</div> */}
             {/* <button onClick={nav("/userlogin/home")}>Home</button> */}
@@ -65,9 +67,10 @@ function RequestList(props) {
         {requestlist}
         </div>
             </div>
+            
        </div>
         </>
     );
 }
 
-export default RequestList;
+export default NgoAcceptRejectList;

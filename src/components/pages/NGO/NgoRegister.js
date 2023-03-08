@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import {Link} from "react-router-dom";
 import axios from "axios";
-// import {useEffect} from "react-router-dom";
-import Ngoreg from "../../images/ngoreg.jpg";
+import ngoform from "../../images/ngoform.jpg";
 
 function NgoRegister(props) {
 
@@ -18,66 +16,41 @@ function NgoRegister(props) {
     let state1;
     let pin1;
     let time1;
-    let role1;
+    let role1=1;
     let pass1;
     let pass2;
     let email1;
     let confpass;
-    let rolename1;
-    let config={
-      headers: { 'Content-Type': 'application/json' }
-    }
 
-    function handler()
+    function create()
     {
-         if(role1==1)
-         {
-           rolename1="Child"; 
-         }       
-        else if(role1==2)
-           {
-            rolename1="Old Age";
-           }  
-         else if(role1==3)
-           {
-            rolename1="Street Dwellers";
-           }  
-          else if(role1==4)
-           {
-            rolename1="Animal";
-           }     
+                     
         if(pass1===pass2)
         {
             confpass=pass2
             let data={
               
-                ngo_id:1,
+                ngo_id:0,
                 ngo_name:ngoname1,
+                role_id:role1, 
                 ngo_phone:contact1, 
                 ngo_email:email1,
                 ngo_time:time1,
                 ngo_username:username1,
                 ngo_password:confpass,
-                role_id: {
-                  role_id: role1,
-                  role_name: rolename1
-              },
                 ngo_address:{
                   street:street1,
                   city:city1,
                   district:dist1,
                   state:state1,
                   pin:pin1,
-                  ngo_aid:1}       
+                  ngo_aid:0}       
               }
-            axios.post("http://localhost:8000/ngo/register",data,config).then((response)=>
+            axios.post("http://localhost:8000/ngo/register",data).then((response)=>
             {
                setConfirm(response.data)
                alert(response.data)
     
-            }).catch(()=>
-            {
-              alert("Not Registered")
             })
         }
         else{
@@ -88,116 +61,152 @@ function NgoRegister(props) {
     
     return (
         <>
-        <div>{confirm}</div>
-     <div style={{alignItems:"end", backgroundColor:"cyan",paddingLeft:"80px",paddingRight:"80px"}}>
-     <center><h1 style={{color:"blue",paddingBottom:"10px"}}>Registration For NGO(Non-Government Organisation)</h1></center>
-     <div style={{float:"right",width:"50",height:"50"}} ><img src={Ngoreg} width="600" height="1000"/></div>
-     <form style={{display:"inline-block"}}>
-  <div class="row mb-4">
-    <div class="col">
-      <div class="form-outline">
-      <label class="form-label" for="form6Example1" >NGO Name</label>
-        <input type="text" id="form6Example1" class="form-control" onBlur={(e)=>ngoname1=e.target.value}/>
-        
-      </div>
-    </div>
-    <div class="col">
-      <div class="form-outline">
-      <label class="form-label" for="form6Example2" >Contact No</label>
-        <input type="text" id="form6Example2" class="form-control" onBlur={(e)=>contact1=e.target.value}/>
-      </div>
-    </div>
-  </div>
+        <section class="h-100 h-custom" style={{backgroundColor: "#8fc4b7"}}>
+  <div  class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-10">
+      <div class="col-lg-8 col-xl-20">
+        <div class="card rounded-3">
+          <img src={ngoform}
+            class="w-100" 
+            alt="Sample photo"/>
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info</h3>
 
-  <div class="form-outline" style={{paddingBottom:"15px"}} >
-  <label class="form-label" for="form6Example2" >Email</label>
-        <input type="text" id="form6Example2" class="form-control" onBlur={(e)=>email1=e.target.value}/>
-       
-      </div>
-  {/* <div class="form-outline mb-4">
-    <input type="number" id="form6Example6" class="form-control" onBlur={(e)=>phone1=e.target.value}/>
-    <label class="form-label" for="form6Example6" >Address</label>
-  </div> */}
-  <div style={{paddingBottom:"15px",width:"100%"}}><b>Working For</b></div>
-  <div style={{paddingBottom:"10px",width:"100%"}}>
-  <select onChange={(e)=>role1=e.target.value}>
-    <option value="1">Child</option>
-    <option value="2">Old Age</option>
-    <option value="3">Street Dwellers</option>
-    <option value="4">Animal</option>
-  </select>
-  </div>
-<br></br>
-  <p style={{paddingBottom:"1px"}}><b>Address</b></p>
-  <br/>
-  <div class="row mb-4">
-   <div class="col">
-    <div class="form-outline mb-4" >
-    <label class="form-label" for="form6Example4" >Street</label>
-        <input type="text" id="form6Example4" class="form-control" onBlur={(e)=>street1=e.target.value}/>
-        
-    </div>
-  </div>
-  <div class="col">
-    <div class="form-outline mb-4">
-    <label class="form-label" for="form6Example4" >City</label>
-        <input type="text" id="form6Example4" class="form-control" onBlur={(e)=>city1=e.target.value}/>
-    </div>
-  </div>
-  </div>
+            <form class="px-md-2">
 
-    <div class="row mb-4">
-    <div class="col">
-        <div class="form-outline mb-4">
-        <label class="form-label" for="form6Example4" >District</label>
-            <input type="text" id="form6Example4" class="form-control" onBlur={(e)=>dist1=e.target.value}/>
+              <div class="row ">
+              <div class="col-md-16 mb-4">
+              <label class="form-label" for="form3Example1q">NGO Name</label>
+                <input type="text" id="form3Example1q" class="form-control"  onBlur={(e)=>ngoname1=e.target.value}/>
+                </div>
+              </div>             
+              
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline datepicker">
+                  <label for="exampleDatepicker1" class="form-label">Contact No</label>
+
+                    <input type="text" class="form-control" id="exampleDatepicker1" onBlur={(e)=>contact1=e.target.value}/>
+                  </div>
+
+                </div>
+
+                <div class="col-md-6 mb-4">
+
+                  <div class="form-outline datepicker">
+                  <label for="exampleDatepicker1" class="form-label">Email</label>
+
+                    <input type="text" class="form-control" id="exampleDatepicker1" onBlur={(e)=>email1=e.target.value} />
+                  </div>
+
+                </div>
+
+               
+                <div class="col-md-6 mb-4">
+                <b>NGO Working for :</b>
+                <div class="col-md-6 mt-3 mb-3">
+                <select class="select" onChange={(e)=>role1=e.target.value} >
+                    <option value="1">Child</option>
+                    <option value="2">Old Age</option>
+                    <option value="3">Street Dwellers</option>
+                    <option value="4">Animal</option>
+                  </select>
+                </div>
+                  </div>
+              </div>
+
             
-        </div>
-    </div>
-        <div class="col">
-            <div class="form-outline mb-4">
-            <label class="form-label" for="form6Example4" >State</label>
-                <input type="text" id="form6Example4" class="form-control" onBlur={(e)=>state1=e.target.value}/>
+
+              <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                <b>Address</b>
+                <div class="col-md-6 mt-4 mb-4">
+
+                <div class="form-outline datepicker">
+                <label for="exampleDatepicker1" class="form-label">Street</label>
+
+                  <input type="text" class="form-control" id="exampleDatepicker1" onBlur={(e)=>street1=e.target.value}/>
+                </div>
+
+                </div>
+                <div class="col-md-6 mb-4 mt-4">
+
+                <div class="form-outline datepicker">
+                <label for="exampleDatepicker1" class="form-label">City</label>
+
+                  <input type="text" class="form-control" id="exampleDatepicker1" onBlur={(e)=>city1=e.target.value} />
+                </div>
+
+                </div>
+                <div class="col-md-6 mb-4 ">
+
+                <div class="form-outline datepicker">
+                <label for="exampleDatepicker1" class="form-label">District</label>
+
+                  <input type="text" class="form-control" id="exampleDatepicker1" onBlur={(e)=>dist1=e.target.value} />
+                </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                <div class="form-outline datepicker">
+                <label for="exampleDatepicker1" class="form-label">State</label>
+
+                  <input type="text" class="form-control" id="exampleDatepicker1" onBlur={(e)=>state1=e.target.value}/>
+                </div>
+
+                </div>
+                <div class="col-md-6 mb-2">
+
+                <div class="form-outline datepicker">
+                <label for="exampleDatepicker1" class="form-label">Pin</label>
+
+                  <input type="text" class="form-control" id="exampleDatepicker1" onBlur={(e)=>pin1=e.target.value}/>
+                </div>
+
+                </div>
+                <div class="col-md-6 mb-2">
+
+                <div class="form-outline datepicker">
+                <label for="exampleDatepicker1" class="form-label">NGO Time</label>
+
+                  <input type="text" class="form-control" placeholder="eg. 9am-5pm" id="exampleDatepicker1" onBlur={(e)=>time1=e.target.value}/>
+                </div>
+
+                </div>
                 
-            </div>
+              </div>
+
+              <div class="row ">
+              <div class="col-md-16 mb-4">
+              <label class="form-label" for="form3Example1q">Username </label>
+                <input type="text" id="form3Example1q" class="form-control" onBlur={(e)=>username1=e.target.value}/>
+                </div>
+              </div> 
+              <div class="row ">
+              <div class="col-md-16 mb-4">
+              <label class="form-label" for="form3Example1q">Password</label>
+                <input type="password" id="form3Example1q" class="form-control" onBlur={(e)=>pass1=e.target.value}/>
+                </div>
+              </div> 
+              <div class="row ">
+              <div class="col-md-16 mb-4">
+              <label class="form-label" for="form3Example1q">Confirm Password</label>
+                <input type="password" id="form3Example1q" class="form-control" onBlur={(e)=>pass2=e.target.value}/>
+                </div>
+              </div>  
+
+              <button type="submit" class="btn btn-success btn-lg mb-1" onClick={create}>Submit</button>
+
+            </form>
+
+          </div>
         </div>
+      </div>
     </div>
-
-  <div class="form-outline mb-4">
-  <label class="form-label" for="form6Example4"  >Pin</label>
-    <input type="number" id="form6Example4" class="form-control" onBlur={(e)=>pin1=e.target.value}/>
-    
   </div>
-
-  <div class="form-outline mb-4">
-  <label class="form-label" for="form6Example4" >Opening Time and Closing Time</label>
-    <input type="text" id="form6Example4" class="form-control" onBlur={(e)=>time1=e.target.value} placeholder="eg. 10am-5pm"/>
-    
-    </div>
-  <div class="form-outline mb-4" width="50%">
-  <label class="form-label" for="form6Example4" >User Name</label>
-    <input type="text" id="form6Example4" class="form-control" onBlur={(e)=>username1=e.target.value} />
-  </div>
-
-  <div class="form-outline mb-4" width="50%">
-  <label class="form-label" for="form6Example4" >Password</label>
-    <input type="text" id="form6Example4" class="form-control" onBlur={(e)=>pass1=e.target.value} />
-    
-  </div>
-  <div class="form-outline mb-4">
-  <label class="form-label" for="form6Example4" >Confirm Password</label>
-    <input type="text" id="form6Example4" class="form-control" onBlur={(e)=>pass2=e.target.value}/>
-    
-  </div>
-  {msg}
-<br></br>
-<br></br>
-<div >
-  <button  class="btn btn-primary btn-block mb-4" onClick={handler}>Create</button>
-  <Link to="/home"><button type="submit" class="btn btn-primary btn-block mb-4" >Cancel</button></Link>
-  </div>
-</form>
-</div>
+</section>
 </>
     );
 }

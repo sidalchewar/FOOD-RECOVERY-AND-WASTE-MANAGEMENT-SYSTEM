@@ -18,7 +18,7 @@ function NgoRegister() {
     let state1;
     let pin1;
     let time1;
-    let role1;
+    let role1=1;
     let pass1;
     let pass2;
     let email1;

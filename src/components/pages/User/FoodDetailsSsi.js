@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Link} from "react-router-dom";
+import {Link, useLocation} from "react-router-dom";
 import axios from "axios";
 import hungary from "../../images/hungary.jpg"
 import hands from "../../images/hungaryhands.jpg"
@@ -7,9 +7,8 @@ import zero from "../../images/zerowaste.jpg"
 
 
 function FoodDetailsSsi(props) {
+  let loc=useLocation();
   let[msg,setMsg]=useState();
-  
-
  let food_id1;
  let food_items1;
  let feed_count1;
@@ -28,32 +27,29 @@ function FoodDetailsSsi(props) {
      function donate(){
          
       let data={
-      food_id:0,
-      food_items:food_items1,
-      feed_count:feed_count1,
-      feed_qty:feed_qty1,
-      food_quality_in_days:food_quality_in_days1,
-      user_id:0,
-      user_name:user_name1,
-      user_address:user_address1,
-      user_contact:user_contact1,
-      ngo_id:null,
-      ngo_name:null,
-      ssi_id:0,
-      ssi_name:ssi_name1,
-      status:status1
+        food_id:0,
+        food_items:food_items1,
+        feed_count:feed_count1,
+        feed_qty:feed_qty1,
+        food_quality_in_days:food_quality_in_days1,
+        user_id:loc.state.user.uid,
+        user_name:loc.state.user.fname+" "+loc.state.user.lname,
+        user_address:loc.state.user.address[0].street+","+loc.state.user.address[0].city+","+loc.state.user.address[0].dist+","+loc.state.user.address[0].state+", Pin-"+loc.state.user.address[0].pin,
+        user_contact:loc.state.user.phone,
+        ngo_id:0,
+        ngo_name:null,
+        ssi_id:loc.state.ssi.ssi_id,
+        ssi_name:loc.state.ssi.ssi_name,
+        ssi_contact:loc.state.ssi.ssi_contact,
+        status:"pending",
+        contact:null
       }
       
       axios.post("http://localhost:8000/fooddetails/addform",data).then((Response)=>{
 
           alert(Response.data);
 
-      });
-
-        
-       
-   
-       
+      });      
        
  }
     return (
@@ -124,7 +120,7 @@ function FoodDetailsSsi(props) {
 
                   <div class="form-outline">
                   <label class="form-label" for="username">User name</label>
-                    <input type="email" id="username" class="form-control form-control-lg" onBlur={(e)=>user_name1=e.target.value} />
+                    <input type="email" id="username" class="form-control form-control-lg" value={loc.state.user.fname+" "+loc.state.user.lname} readOnly/>
                 
                   </div>
 
@@ -133,7 +129,7 @@ function FoodDetailsSsi(props) {
 
                   <div class="form-outline">
                   <label class="form-label" for="usercontact">User contact</label>
-                    <input type="tel" id="usercontact" class="form-control form-control-lg"  onBlur={(e)=> user_contact1=e.target.value}/>
+                    <input type="tel" id="usercontact" class="form-control form-control-lg"  value={loc.state.user.phone} readOnly/>
                     
                   </div>
 
@@ -145,7 +141,7 @@ function FoodDetailsSsi(props) {
                 
                 <div class="form-outline">
                 <label class="form-label" for="useradd">User address</label>
-                    <input type="tel" id="useradd" class="form-control form-control-lg" onBlur={(e)=>user_address1=e.target.value} />
+                    <input type="tel" id="useradd" class="form-control form-control-lg" value={loc.state.user.address[0].street+","+loc.state.user.address[0].city+","+loc.state.user.address[0].dist+","+loc.state.user.address[0].state+", Pin-"+loc.state.user.address[0].pin} readOnly />
                
                   </div>
                   
@@ -157,7 +153,7 @@ function FoodDetailsSsi(props) {
                 
                 <div class="form-outline">
                 <label class="form-label" for="ssiname">Small Scale Industry name</label>
-                    <input type="tel" id="ssiname" class="form-control form-control-lg" onBlur={(e)=>ssi_name1=e.target.value}  />
+                    <input type="tel" id="ssiname" class="form-control form-control-lg" value={loc.state.ssi.ssi_name}  />
                    
                   </div>
                   
