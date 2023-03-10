@@ -22,15 +22,20 @@ public class NGOServiceImpl implements NGOService{
 		
 		List<NGO> nlist= ngo_dao.findAll();
 		List<NGO> ngolist=new ArrayList<NGO>();
+		if(nlist!=null)
+		{
 		for(NGO ngo:nlist)
 		{
-			if(ngo.getNgo_id()==id)
+			if(ngo.getRole_id()==id)
 			{
 				ngolist.add(ngo);
+			  System.out.println(ngo);
 			}
 		}
-		
-		return ngolist;
+	      return ngolist;
+		}
+		else
+		return null;
 	}
 
 

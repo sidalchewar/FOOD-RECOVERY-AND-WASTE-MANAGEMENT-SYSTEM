@@ -33,7 +33,7 @@ public class SSI_Controller {
 	@Autowired
 	SSIService ssiservice;
 	
-	@GetMapping("/displayssi")
+	@GetMapping("/ssilist")
 	public List<SSI> displayAll(){				
 		
 		return ssiservice.getAllssi();

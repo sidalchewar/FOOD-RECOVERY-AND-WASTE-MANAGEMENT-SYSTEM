@@ -3,18 +3,18 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
 function RequestList(props) {
-    let loc=useLocation();
+    let ssi=useLocation();
     let nav=useNavigate();
     let requestdata;
     let [requestlist,setRequest]=useState();
-    let ngoid=loc.state.ngo_id;
+    let ssiid=ssi.state.ssi_id;
     let [foodid,setFoodid]=useState();
     let [requestfood,setRequestfood]=useState();
     let [status,setStatus]=useState();
   
     function acceptHandler(id)
     {
-        axios.get("http://localhost:8000/fooddetails/confirmlistngo/"+id).then(()=>
+        axios.get("http://localhost:8000/fooddetails/confirmlistssi/"+id).then(()=>
         {
             alert("Confirmed");
             
@@ -26,7 +26,7 @@ function RequestList(props) {
 
     function rejectHandler(id)
     {
-        axios.get("http://localhost:8000/fooddetails/rejectlistngo/"+id).then(()=>
+        axios.get("http://localhost:8000/fooddetails/rejectlistssi/"+id).then(()=>
         {
             alert("Confirmed");
             
@@ -38,7 +38,7 @@ function RequestList(props) {
 
     useEffect(()=>
     {
-        axios.get("http://localhost:8000/fooddetails/showreqlisttongo/"+ngoid).then((response)=>
+        axios.get("http://localhost:8000/fooddetails/showreqlisttossi/"+ssiid).then((response)=>
         {
             //   alert(response.data)
               requestdata=response.data;
@@ -51,9 +51,9 @@ function RequestList(props) {
                     <h5 class="card-header">User Name:- {data.user_name}</h5>
                 <div class="card-body">
                     <h5 class="card-title">User Contact:- {data.user_contact}</h5>
-                    <h5 class="card-title">User Address:- {data.user_address}</h5>
                     <p class="card-text"><b>Food Details:- </b>{data.food_items}<br/>
                     {data.feed_qty}</p>
+                    <p class="card-text"><b>User Address:- </b>{data.user_address}</p>
                     {/* ({status}?<div class="badge badge-success rounded-pill d-inline" >{status}</div> */}
                     <button class="badge badge-success rounded-pill d-inline" style={{backgroundColor:"green"}} onClick={(()=>
                         {

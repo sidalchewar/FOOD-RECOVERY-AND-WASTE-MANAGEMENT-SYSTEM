@@ -28,7 +28,7 @@ useEffect(()=>
 {
     // let list=loc.ngotable;
 
-    let list= loc.state.ngolist?.map((data,index)=>
+    setShowlist(loc.state.ngolist?.map((data,index)=>
     {
        return( <tr>
       <td key={index}>
@@ -54,14 +54,13 @@ useEffect(()=>
        {
         user:loc.state.user,
         ngodata:data 
-       }      
-       
+       }            
         nav("/userlogin/fooddetailsngo",{state:user_ngo})})}>Donate</button></td>
     </tr>
        )
-    })
+    }))
 
-    setShowlist(list);
+    // setShowlist(list);
 
 },[])
     // function ngodonate()

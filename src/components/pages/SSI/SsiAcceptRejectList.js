@@ -7,11 +7,11 @@ function NgoAcceptRejectList(props) {
     let nav=useNavigate();
     let requestdata;
     let [requestlist,setRequest]=useState();
-    let ngoid=loc.state.ngo_id;
+    let ssiid=loc.state.ssi_id;
     let [requestfood,setRequestfood]=useState();
     useEffect(()=>
     {
-        axios.get("http://localhost:8000/fooddetails/showconlisttongo/"+ngoid).then((response)=>
+        axios.get("http://localhost:8000/fooddetails/showconlisttossi/"+ssiid).then((response)=>
         {
             //   alert(response.data)
               requestdata=response.data;

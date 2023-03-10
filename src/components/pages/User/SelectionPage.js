@@ -33,12 +33,18 @@ function SelectionPage(props) {
         axios.get("http://localhost:8000/ssi/ssilist/",Config).then((response)=>
         {
            let lst=response.data;
+           if(lst!=null)
+           {
            let fooddata=
            {
                user:userdata,
                ssilist:lst
            }
            nav("/userlogin/ssilist",{state:fooddata});
+        }
+        else{
+            alert("No list Found");
+        }
         }).catch(()=>
         {
             alert("Not Found")

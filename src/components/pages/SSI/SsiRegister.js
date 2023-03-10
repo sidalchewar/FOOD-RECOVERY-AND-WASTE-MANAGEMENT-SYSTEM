@@ -58,7 +58,7 @@ export default function SsiRegister(props) {
 
   return (
     <>
-    <div style={{background:"pink"}}>
+    <div style={{background:"pink",paddingBottom:"50px"}}>
       <section class="vh-100 gradient-custom" style={{paddingBottom:"1000px"}}>
         <div class="container py-5 h-100">
           <div class="row justify-content-center align-items-center h-100">

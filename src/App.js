@@ -21,11 +21,13 @@ import NgoRegister from './components/pages/NGO/NgoRegister';
 import NgoLogin from './components/pages/NGO/NgoLogin'
 import NgoLoginHome from './components/pages/NGO/NgoLoginHome'
 import NgoRequestList from './components/pages/NGO/NgoRequestList';
+import NgoAcceptRejectList from './components/pages/NGO/NgoAcceptRejectList';
 
 import SsiRegister from './components/pages/SSI/SsiRegister';
 import SsiLogin from './components/pages/SSI/SsiLogin';
 import SsiLoginHome from './components/pages/SSI/SsiLoginHome';
-
+import SsiRequestList from './components/pages/SSI/SsiRequestList';
+import SsiAcceptRejectList from './components/pages/SSI/SsiAcceptRejectList';
 
 
 function App() {
@@ -54,10 +56,15 @@ function App() {
     <Route path="/ngologin" element={<NgoLogin></NgoLogin>}></Route>
     <Route path="/ngologin/home" element={<NgoLoginHome></NgoLoginHome>}></Route>
     <Route path="/ngologin/requestlist" element={<NgoRequestList></NgoRequestList>}></Route>
+    <Route path="/ngologin/acceptrejectlist" element={<NgoAcceptRejectList></NgoAcceptRejectList>}></Route>
     
+
     <Route path="/ssiregister" element={<SsiRegister></SsiRegister>}></Route>
     <Route path="/ssilogin" element={<SsiLogin></SsiLogin>}></Route>
     <Route path="/ssilogin/home" element={<SsiLoginHome></SsiLoginHome>}></Route>
+    <Route path="/ssilogin/requestlist" element={<SsiRequestList></SsiRequestList>}></Route>
+    <Route path="/ssilogin/acceptrejectlist" element={<SsiAcceptRejectList></SsiAcceptRejectList>}></Route>
+
     </Route>
     </Routes>
       </Router>

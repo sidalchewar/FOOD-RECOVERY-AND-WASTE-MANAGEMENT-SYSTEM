@@ -8,11 +8,11 @@ function SsiList() {
     let [showlist,setShowlist]=useState();
 useEffect(()=>
 {
-   
+    
     let list= loc.state.ssilist?.map((data,index)=>
     {
-       return( <tr>
-      <td key={index}>
+       return( <tr key={index}>
+      <td >
         <div class="d-flex align-items-center">
         
           <div class="ms-3">
@@ -24,8 +24,8 @@ useEffect(()=>
        <b>{data.ssi_name}</b>
       </td>
       <td> 
-        {data.ssi_address.street},{data.ssi_address.city},
-        {data.ssi_address.state},{data.ssi_address.pin}
+        {data.ssi_Address.street},{data.ssi_Address.city},
+        {data.ssi_Address.state},{data.ssi_Address.pin}
       </td>
       <td>{data.ssi_email}</td>
       <td>{data.ssi_phone}</td>

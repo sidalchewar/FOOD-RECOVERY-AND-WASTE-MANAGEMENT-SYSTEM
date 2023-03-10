@@ -6,7 +6,7 @@ import hands from "../../images/hungaryhands.jpg"
 import ContactUs from '../Home/ContactUs';
 
 
-function FoodDetails(props) {
+function FoodDetails() {
   let loc=useLocation();
   let nav=useNavigate();
   let[msg,setMsg]=useState();
@@ -41,22 +41,23 @@ function FoodDetails(props) {
       user_contact:loc.state.user.phone,
       ngo_id:loc.state.ngodata.ngo_id,
       ngo_name:loc.state.ngodata.ngo_name,
-      ssi_id:null,
+      ssi_id:0,
       ssi_name:null,
       ssi_contact:null,
       status:"pending",
-      contact:loc.state.ngodata.ngo_contact
+      contact:loc.state.ngodata.ngo_phone
       }      
+
       axios.post("http://localhost:8000/fooddetails/addform",data).then((Response)=>{
 
-          alert(Response.data);
-          // nav("/userlogin/home");
+          alert("Submitted Successfully")
+          nav("/userlogin/home",{state:loc.state.user});
 
       });      
  }
     return (
    
-      <div style={{backgroundImage: `url(${hands})`,backgroundRepeat: "no-repeat",backgroundSize: "cover",paddingBottom:"200px"}}>
+      <div style={{backgroundImage: `url(${hands})`,backgroundRepeat: "no-repeat",backgroundSize: "cover",paddingBottom:"300px"}}>
       {/* <div  style={{alignItems:"end",backgroundColor:"skyblue", paddingLeft:"80px",paddingRight:"80px"}}> */}
      <center><h1 style={{color:"blue",paddingBottom:"10px"}}><marquee width="80%" direction="left" height="50px">
      <font color="#FF2626">D</font>
@@ -126,6 +127,7 @@ function FoodDetails(props) {
                 </div>
               </div>
 
+             <h3><b>From</b></h3>
               <div class="row">
                 <div class="col-md-6 mb-4 pb-2">
 
@@ -158,7 +160,7 @@ function FoodDetails(props) {
                   
                 </div>
             </div>
-            
+            <h3><b>To</b></h3>
             <div class="row">
                 <div class="col-12">
                 
@@ -172,8 +174,9 @@ function FoodDetails(props) {
             </div>
 
               <div class="mt-4 pt-2">
-                <input class="btn btn-primary btn-lg" type="submit" value="Submit" onClick={donate} />
+                <button class="btn btn-primary btn-lg"  onClick={donate} >Submit</button>
               </div>
+              {/* {msg} */}
 
             </form>
           </div>

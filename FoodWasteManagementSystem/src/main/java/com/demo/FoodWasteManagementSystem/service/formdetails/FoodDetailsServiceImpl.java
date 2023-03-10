@@ -48,12 +48,13 @@ public class FoodDetailsServiceImpl implements FoodDetailsService {
 			}
 
 		}
+		return fooddetails;
 		}
 		else
 		{
 			return null;
 		}
-		return fooddetails;
+		
 	}
 	//This is for user to check the confirm list which he send to respective ngo.
 	@Override
@@ -72,13 +73,14 @@ public class FoodDetailsServiceImpl implements FoodDetailsService {
 	     }
 		
 	}
-		else
+	else
 		{
 			return null;
 		}
 
 	if(fooddetails.isEmpty())
 		return null;
+	
 		return fooddetails;
 	}
 
@@ -163,12 +165,13 @@ List<FoodDetails> fdlist=dao.findAll();
 			}
 
 		}
+		return fooddetails;
 		}
 		else
 		{
 			return null;
 		}
-		return fooddetails;
+		
 	}
 
 
