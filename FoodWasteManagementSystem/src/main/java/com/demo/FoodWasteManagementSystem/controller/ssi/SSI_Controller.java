@@ -47,11 +47,11 @@ public class SSI_Controller {
 	}
 	
 	@GetMapping("/login/{username}/{password}")
-	public String login(@PathVariable String username,@PathVariable String password){
+	public SSI login(@PathVariable String username,@PathVariable String password){
 		  
 		
-//		return ssiservice.login(username,password);		
-		return username+" "+password;
+		return ssiservice.login(username,password);		
+		//return username+" "+password;
 	}
 	
 	

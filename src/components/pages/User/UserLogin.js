@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router';
+import { Navigate, useLocation, useNavigate } from 'react-router';
 import Ngochild from '../../images/ngoreg.jpg';
 import Config from '../../Config/config'
 
 function UserLogin(props) {
     let nav=useNavigate();
-    let [username,setUsername]=useState();
-    let [password,setPassword]=useState();
+    // let loc=useLocation();
+    let [username,setUsername]=useState("");
+    let [password,setPassword]=useState("");
     const cors=require("cors");
     let [msg,setMsg]=useState();
     // const config={
@@ -16,7 +17,8 @@ function UserLogin(props) {
     // }
     function handler()
     {
-        
+        if(username!="" && password!="")
+        {
         axios.post("http://localhost:8000/user/login/"+username+"/"+password,Config).then((response)=>
         {
             //let [user,setUser]=response.data
@@ -38,6 +40,10 @@ function UserLogin(props) {
         {
             setMsg("Invalid username/password")
         })
+      }
+      else{
+        alert("Please Enter Credentials")
+      }
 
     }
     return (

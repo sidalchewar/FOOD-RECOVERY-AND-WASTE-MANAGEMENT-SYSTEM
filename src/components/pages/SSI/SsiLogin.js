@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router';
-import Ngochild from '../../images/ngoreg.jpg';
+import Composting from '../../images/composting.jpg';
 import Config from '../../Config/config'
 import { Link } from 'react-router-dom';
 
@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom';
 
 function UserLogin() {
     let nav=useNavigate();
-    let [username,setUsername]=useState();
-    let [password,setPassword]=useState();
+    let [username,setUsername]=useState("");
+    let [password,setPassword]=useState("");
     const cors=require("cors");
     let [msg,setMsg]=useState();
    
@@ -20,7 +20,8 @@ function UserLogin() {
      }
     function handler()
     {
-        
+        if(username!="" && password!="")
+        {
         axios.get("http://localhost:8000/ssi/login/"+username+"/"+password,config).then((response)=>
         {
             //let [user,setUser]=response.data
@@ -40,6 +41,10 @@ function UserLogin() {
         {
             setMsg("Invalid username/password")
         })
+      }
+      else{
+        alert("Please Enter Credentials")
+      }
 
     }
     return (
@@ -87,7 +92,7 @@ function UserLogin() {
 
       </div>
       <div class="col-sm-6 px-0 d-none d-sm-block">
-        <img src={Ngochild}
+        <img src={Composting}
           alt="Login image"  style={{objectFit: "cover", objectPosition: "left",width:"600px",height:"600px",paddingTop:"10px"}}/>
       </div>
     </div>

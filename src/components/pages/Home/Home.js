@@ -14,8 +14,8 @@ function Home(props) {
     // })
     
     return (
-        <div>
-            <h1>Home</h1>
+        <div style={{backgroundColor:"bisque",paddingBottom:"200px"}}>
+            <marquee><h1 style={{color:"gray"}}>Food Recovery And Management System</h1></marquee>
             <HomeSlider></HomeSlider>
         </div>
     );

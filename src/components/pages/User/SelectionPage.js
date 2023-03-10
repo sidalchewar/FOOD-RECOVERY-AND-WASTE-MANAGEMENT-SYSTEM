@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import Ngochild from '../../images/ngo1.jpeg';
+import Ssiimg from '../../images/ssi.jpg';
+
 import Config from '../../Config/config'
 import { useNavigate } from 'react-router';
 function SelectionPage(props) {
@@ -53,8 +55,8 @@ function SelectionPage(props) {
     }
     return (
         <div>
-            <div>{userdata.fname}</div>
-              <div style={{marginBottom:"50px"}}>NGO</div>
+            {/* <div>{userdata.fname}</div>
+              <div style={{marginBottom:"50px"}}></div> */}
               <div class="container-fluid">
          <div class="row" style={{marginBottom:"500px"}}>
             <div class="col-sm-6">
@@ -78,7 +80,7 @@ function SelectionPage(props) {
         </div>
         <div class="col-sm-6">
             <div class="card" style={{width:400,height:100,float:"right",marginRight:"150px"}}>
-            <img class="card-img-top" src={Ngochild} alt="Card image cap" />
+            <img class="card-img-top" src={Ssiimg} alt="Card image cap"  style={{paddingBottom:"80px"}}/>
             <div class="card-body">
             <h5 class="card-title"><i>SSI(Small Scale Industries)</i></h5>
             <p class="card-text">Small scale industries are referred to as those industries in which the process of manufacturing, production and servicing are done on a small scale. The investment on such industries is one time and these investments are mostly done on plant and machinery, the total investment on such industries do not exceed 1 crore.</p>

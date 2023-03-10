@@ -28,7 +28,7 @@ function RequestList(props) {
                     <h5 class="card-title">NGO Contact:- {data.contact}</h5>
                     <p class="card-text"><b>Food Details:- </b>{data.food_items}<br/>
                     {data.feed_qty}</p>
-                    <div class="badge badge-success rounded-pill d-inline" style={{backgroundColor:"red"}}>Pending</div>
+                    <div class="badge badge-success rounded-pill d-inline" style={{backgroundColor:"yellow",color:"black"}}>Pending</div>
                 </div>
                 </div>
             
@@ -41,7 +41,7 @@ function RequestList(props) {
                         <h5 class="card-title">SSI Contact:- {data.ssi_contact}</h5>
                         <p class="card-text"><b>Food Details:- </b>{data.food_items}<br/>
                         {data.feed_qty}</p>
-                        <div class="badge badge-success rounded-pill d-inline" style={{backgroundColor:"red"}}>Pending</div>
+                        <div class="badge badge-success rounded-pill d-inline" style={{backgroundColor:"yellow",color:"black"}}>Pending</div>
                     </div>
                     </div>
                 )

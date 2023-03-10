@@ -12,8 +12,9 @@ function NgoLoginHome(props) {
     return (
         <div style={{marginBottom:"200px",marginTop:"10px"}}>
             Welcome {us}
-            <button style={{float:"right",marginBlock:"10px",marginRight:"50px"}} onClick={()=>nav("/ngologin/acceptrejectlist",{state:ngo.state})}>Accepted/Rejected List</button>
-            <button style={{float:"right",marginBlock:"10px",marginRight:"50px"}} onClick={()=>nav("/ngologin/requestlist",{state:ngo.state})}>Request List</button>
+            <button style={{float:"right",marginBlock:"10px",marginRight:"50px",backgroundColor:"red"}} onClick={()=>nav("/ngologin")}>Logout</button><br/><br/>
+            <button style={{float:"right",marginBlock:"10px",marginRight:"50px",backgroundColor:"pink"}} onClick={()=>nav("/ngologin/acceptrejectlist",{state:ngo.state})}>Accepted/Rejected List</button>
+            <button style={{float:"right",marginBlock:"10px",marginRight:"50px",backgroundColor:"pink"}} onClick={()=>nav("/ngologin/requestlist",{state:ngo.state})}>Request List</button>
         </div>
     );
 }

@@ -40,7 +40,7 @@ function FoodDetailsSsi(props) {
         ngo_name:null,
         ssi_id:loc.state.ssi.ssi_id,
         ssi_name:loc.state.ssi.ssi_name,
-        ssi_contact:loc.state.ssi.ssi_contact,
+        ssi_contact:loc.state.ssi.ssi_phone,
         status:"pending",
         contact:null
       }
@@ -54,9 +54,9 @@ function FoodDetailsSsi(props) {
  }
     return (
    
-      <div style={{backgroundImage: `url(${zero})`,backgroundRepeat: "no-repeat",backgroundSize: "cover"}}>
+      <div style={{backgroundImage: `url(${zero})`,backgroundRepeat: "no-repeat",backgroundSize: "cover",paddingBottom:"200px"}}>
       {/* <div  style={{alignItems:"end",backgroundColor:"skyblue", paddingLeft:"80px",paddingRight:"80px"}}> */}
-     <center><h1 style={{color:"blue",paddingBottom:"10px"}}><marquee width="80%" direction="left" height="50px">
+     <center><h1 style={{color:"blue",paddingBottom:"10px",}}><marquee width="100%" direction="left" height="50px">
      <font color="#FF2626">S</font>
             <font color="#252A34">E</font>
             <font color="#753422">L</font>
@@ -73,7 +73,7 @@ function FoodDetailsSsi(props) {
      <form style={{display:"inline-block"}} ></form>
          
        
-        <div style={{paddingBottom:"50px",paddingLeft:"900px"}} >
+        <div style={{paddingBottom:"50px",paddingLeft:"500px"}} >
             <section class="vh-100 gradient-custom">
   <div class="container py-5 h-100">
     <div class="row justify-content-center align-items-center h-100">

@@ -11,8 +11,8 @@ import NGOLOGO from "../../images/NGOLOGO.jpg";
 
 function NgoLogin(props) {
     let nav=useNavigate();
-    let [username,setUsername]=useState();
-    let [password,setPassword]=useState();
+    let [username,setUsername]=useState("");
+    let [password,setPassword]=useState("");
     const cors=require("cors");
     let [msg,setMsg]=useState();
     const config={
@@ -21,7 +21,8 @@ function NgoLogin(props) {
     }
     function handler()
     {
-        
+        if(username!="" && password!="")
+        {
         axios.post("http://localhost:8000/ngo/login/"+username+"/"+password,config).then((response)=>
         {
             //let [user,setUser]=response.data
@@ -38,6 +39,10 @@ function NgoLogin(props) {
         {
             setMsg("Invalid username/password")
         })
+      }
+      else{
+        alert("Please Enter Credentials")
+      }
 
     }
     return (
@@ -68,13 +73,13 @@ function NgoLogin(props) {
                   <label class="form-label" for="form2Example11">Username</label>
 
                     <input type="email" id="form2Example11" class="form-control"
-                      placeholder="Phone number or email address" onBlur={(e)=>(setUsername(e.target.value))} />
+                      placeholder="Phone number or email address" onBlur={(e)=>(setUsername(e.target.value))} required/>
                   </div>
 
                   <div class="form-outline mb-4">
                   <label class="form-label" for="form2Example22">Password</label>
 
-                    <input type="password" id="form2Example22" class="form-control" onBlur={(e)=>(setPassword(e.target.value))}/>
+                    <input type="password" id="form2Example22" class="form-control" onBlur={(e)=>(setPassword(e.target.value))} required/>
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">

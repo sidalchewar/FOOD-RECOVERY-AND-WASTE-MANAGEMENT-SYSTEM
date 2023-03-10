@@ -24,7 +24,7 @@ function NgoRegister(props) {
 
     function create()
     {
-                     
+            
         if(pass1===pass2)
         {
             confpass=pass2
