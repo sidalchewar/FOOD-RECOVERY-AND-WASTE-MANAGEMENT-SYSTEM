@@ -19,8 +19,17 @@ public class SSIServiceImpl implements SSIService{
 
 	@Override
 	public List<SSI> getAllssi() {
-		// TODO Auto-generated method stub
-		return ssi_dao.findAll();
+		List<SSI> ssi=ssi_dao.findAll();
+		if(ssi!=null)
+		{
+			for(SSI s:ssi)
+			{
+				System.out.println(s);
+			}
+			return ssi;
+			
+		}
+		return null;
 	}
 
 	@Override

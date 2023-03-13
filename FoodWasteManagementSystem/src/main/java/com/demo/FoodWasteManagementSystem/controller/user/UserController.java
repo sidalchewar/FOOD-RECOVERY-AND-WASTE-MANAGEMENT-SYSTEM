@@ -3,6 +3,7 @@ package com.demo.FoodWasteManagementSystem.controller.user;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,6 @@ public class UserController{
 	@Autowired
 	UserService service;
 	
-	@PostMapping("/register")
-	public void registerUser(@RequestBody User user)
-	{
-		service.AddUser(user);
-		
-	}
 		
 	@GetMapping("/getuser")
 	public List<User> getAllUser()
@@ -44,17 +39,26 @@ public class UserController{
 		return ulist;
 	}
 	
-	@GetMapping("/login/{email}/{password}")
-	public User ValidateUser(@PathVariable String password,@PathVariable String email) {
-//		User user=service.getUser(password,email);
-		List<Address> ad=new ArrayList<Address>();
-		ad.add(new Address("asdf","asdfasd","asd","aff",57));
-		User user=new User("sid","alchewar","234235","abc","abc",ad,1);
-		user.setUid(10);
-		if(user.getEmail().equals(email) && user.getPassword().equals(password))
-		{
-			return user;
-		}
-		return null;
+	@PostMapping("/register")
+	public String addNewUser(@Valid @RequestBody User u)
+	{
+		return service.addUser(u);
+		
 	}
+	
+	@PostMapping("/login/{email}/{password}")
+	public User ValidateUser(@PathVariable String password,@PathVariable String email) {
+
+		return service.getUser(password,email);
+//		List<Address> ad=new ArrayList<Address>();
+//		ad.add(new Address("asdf","asdfasd","asd","aff",57));
+//		User user=new User("sid","alchewar","234235","abc","abc",ad,1);
+//		user.setUid(10);
+//		if(user.getEmail().equals(email) && user.getPassword().equals(password))
+//		{
+//			return user;
+//		}
+//		return null;
+//	}
+}
 }

@@ -6,8 +6,14 @@ import com.demo.FoodWasteManagementSystem.beans.ngo.NGO;
 
 public interface NGOService {
 
-	List<NGO> getAllNgos();
+	List<NGO> getAllNgos(int role_id);
 
-	int addNewNgo();
+	
+
+	void addNewNgo(NGO ngo);
+
+
+
+	NGO getNgo(String username, String password);
 
 }

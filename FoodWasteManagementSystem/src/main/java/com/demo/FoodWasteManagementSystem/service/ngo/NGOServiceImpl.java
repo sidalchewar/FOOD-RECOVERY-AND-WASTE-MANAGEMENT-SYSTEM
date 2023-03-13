@@ -1,5 +1,6 @@
 package com.demo.FoodWasteManagementSystem.service.ngo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,15 +18,47 @@ public class NGOServiceImpl implements NGOService{
 	NGODao ngo_dao;
 	
 	@Override
-	public List<NGO> getAllNgos() {
+	public List<NGO> getAllNgos(int id) {
 		
-		return ngo_dao.findAll();
+		List<NGO> nlist= ngo_dao.findAll();
+		List<NGO> ngolist=new ArrayList<NGO>();
+		if(nlist!=null)
+		{
+		for(NGO ngo:nlist)
+		{
+			if(ngo.getRole_id()==id)
+			{
+				ngolist.add(ngo);
+			  System.out.println(ngo);
+			}
+		}
+	      return ngolist;
+		}
+		else
+		return null;
 	}
 
+
+
 	@Override
-	public int addNewNgo() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void addNewNgo(NGO ngo) {
+		ngo_dao.save(ngo);
+		
+	}
+
+
+	public NGO getNgo(String un, String pass) {
+		List<NGO> ngolist=new ArrayList<>();
+		 ngolist=ngo_dao.findAll();
+		 
+		NGO ngo=null;
+		for(NGO n:ngolist) {
+			System.out.println(n);
+			if(n.getNgo_username().equals(un) && n.getNgo_password().equals(pass)) {
+				ngo=n;
+			}
+		}
+		return ngo;
 	}
 
 	
