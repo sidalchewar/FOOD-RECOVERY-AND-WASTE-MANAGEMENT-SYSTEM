@@ -7,6 +7,7 @@ import zero from "../../images/zerowaste.jpg"
 
 
 function FoodDetailsSsi(props) {
+  props.preventDefault();
   let loc=useLocation();
   let[msg,setMsg]=useState();
  let food_id1;
