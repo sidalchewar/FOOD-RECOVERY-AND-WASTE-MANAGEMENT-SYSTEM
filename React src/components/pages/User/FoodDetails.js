@@ -6,7 +6,8 @@ import hands from "../../images/hungaryhands.jpg"
 import ContactUs from '../Home/ContactUs';
 
 
-function FoodDetails() {
+function FoodDetails(e) {
+  e.preventDefault();
   let loc=useLocation();
   let nav=useNavigate();
   let[msg,setMsg]=useState();
