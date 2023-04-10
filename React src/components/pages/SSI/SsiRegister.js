@@ -60,13 +60,13 @@ export default function SsiRegister(props) {
     <>
     <div style={{background:"pink",paddingBottom:"50px"}}>
       <section class="vh-100 gradient-custom" style={{paddingBottom:"1000px"}}>
-        <div class="container py-5 h-100">
+        <div class="container py-5 h-100" >
           <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 col-lg-9 col-xl-7">
               <div class="card shadow-2-strong card-registration" style={{ borderRadius: "15px" }}>
                 <div class="card-body p-4 p-md-5">
-                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-                  <form>
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">SSI Registration Form</h3>
+                  <form >
 
                     <div class="row">
                       <div class="col-md-6 mb-4">

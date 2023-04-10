@@ -24,11 +24,12 @@ function NgoList() {
     {
       rolename="Animal";
     }
-useEffect(()=>
-{
-    // let list=loc.ngotable;
+// useEffect(()=>
+// {
+//     // let list=loc.ngotable;
 
-    setShowlist(loc.state.ngolist?.map((data,index)=>
+    // setShowlist(loc.state.ngolist?.map((data,index)=>
+    const shlist=loc.state.ngolist?.map((data,index)=>
     {
        return( <tr>
       <td key={index}>
@@ -58,11 +59,12 @@ useEffect(()=>
         nav("/userlogin/fooddetailsngo",{state:user_ngo})})}>Donate</button></td>
     </tr>
        )
-    }))
+    // }))
+      });
 
     // setShowlist(list);
 
-},[])
+// },[])
     // function ngodonate()
     // {
 
@@ -85,7 +87,8 @@ useEffect(()=>
     </tr>
   </thead>
   <tbody>
-    {showlist}
+    {/* {showlist} */}
+    {shlist}
   </tbody>
 </table>    
         </div>

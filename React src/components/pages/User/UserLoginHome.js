@@ -6,11 +6,11 @@ import SelectionPage from './SelectionPage';
 function UserLoginHome() {
     let user=useLocation();
     let nav=useNavigate();
-    let [us,setUser]=useState();
-    useEffect(()=>
-    {
-         setUser(user.state.fname);
-    })
+    let us=user.state.fname+" "+user.state.lname;
+    // useEffect(()=>
+    // {
+    //      setUser(user.state.fname);
+    // })
     return (
         <>
         <div style={{paddingBottom:"50px"}}>

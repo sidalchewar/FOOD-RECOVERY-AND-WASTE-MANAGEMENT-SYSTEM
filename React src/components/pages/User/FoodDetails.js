@@ -27,8 +27,8 @@ function FoodDetails() {
 //  let ssi_name1;
 //  let status1;
 
-     function donate(){
-         
+     function donate(e){
+      e.preventDefault();
       let data={
       food_id:0,
       food_items:food_items1,
@@ -51,9 +51,10 @@ function FoodDetails() {
       axios.post("http://localhost:8000/fooddetails/addform",data).then((Response)=>{
 
           alert("Submitted Successfully")
-          nav("/userlogin/home",{state:loc.state.user});
+         nav("/userlogin/home",{state:loc.state.user});
 
       });      
+
  }
     return (
    
