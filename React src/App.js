@@ -37,7 +37,7 @@ function App() {
    <Router>    
     <Routes>
     <Route  path="/" element={<Layout></Layout>}>
-    <Route exact path="/home" element={<Home></Home>}></Route>
+    <Route index element={<Home></Home>}></Route>
     <Route path="/about" element={<AboutUs></AboutUs>}></Route>
     <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
 

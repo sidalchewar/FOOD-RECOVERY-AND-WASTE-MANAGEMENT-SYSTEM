@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import axios from "axios";
 import hungary from "../../images/hungary.jpg"
 import hands from "../../images/hungaryhands.jpg"
@@ -7,8 +7,9 @@ import zero from "../../images/zerowaste.jpg"
 
 
 function FoodDetailsSsi(props) {
-  props.preventDefault();
+
   let loc=useLocation();
+  let nav=useNavigate();
   let[msg,setMsg]=useState();
  let food_id1;
  let food_items1;
@@ -25,8 +26,8 @@ function FoodDetailsSsi(props) {
  let ssi_name1;
  let status1;
 
-     function donate(){
-         
+     function donate(e){
+         e.preventDefault();
       let data={
         food_id:0,
         food_items:food_items1,
@@ -48,7 +49,8 @@ function FoodDetailsSsi(props) {
       
       axios.post("http://localhost:8000/fooddetails/addform",data).then((Response)=>{
 
-          alert(Response.data);
+        alert("Submitted Successfully")
+        nav("/userlogin/home",{state:loc.state.user});
 
       });      
        

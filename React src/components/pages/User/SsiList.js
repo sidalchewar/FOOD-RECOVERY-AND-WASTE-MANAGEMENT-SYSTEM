@@ -6,8 +6,8 @@ function SsiList() {
     let loc=useLocation();
     let nav=useNavigate();
     let [showlist,setShowlist]=useState();
-useEffect(()=>
-{
+// useEffect(()=>
+// {
     
     let list= loc.state.ssilist?.map((data,index)=>
     {
@@ -42,9 +42,9 @@ useEffect(()=>
        )
     })
 
-    setShowlist(list);
+   // setShowlist(list);
 
-},[])
+// },[])
    
     
     return (
@@ -64,7 +64,7 @@ useEffect(()=>
     </tr>
   </thead>
   <tbody>
-    {showlist}
+    {list}
   </tbody>
 </table>    
         </div>

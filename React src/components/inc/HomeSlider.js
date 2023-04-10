@@ -7,7 +7,7 @@ function  HomeSlider() {
     return (
         <>
         <center>
-        <div id="carouselExampleCaptions" class="carousel slide" style={{height:"80ex",width:"100ex"}}>
+        <div id="carouselExampleCaptions" class="carousel slide" style={{height:"100ex",width:"100ex"}}>
    <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
