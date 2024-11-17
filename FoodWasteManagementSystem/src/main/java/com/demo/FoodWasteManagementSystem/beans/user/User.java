@@ -22,14 +22,14 @@ public class User {
 	private String email;
 	private String password;
 	private int role;
-	@OneToMany(cascade = CascadeType.ALL)
-	private List<Address> address;
+	//@OneToMany(cascade = CascadeType.ALL)
+	//private List<Address> address;
 
 	public User() {
 		super();
 	}
 
-	public User(String fname,String lname,String phone,String email,String pass,int r,List<Address> ad) {
+	public User(String fname,String lname,String phone,String email,String pass,int r) {
 		super();
 		
 		this.fname=fname;
@@ -38,7 +38,7 @@ public class User {
 		this.email=email;
 		this.password=pass;
 		this.role=r;
-		this.address=ad;
+		//this.address=ad;
 	}
 
 
@@ -91,13 +91,13 @@ public class User {
 		this.password = password;
 	}
 
-	public List<Address> getAddress() {
-		return address;
-	}
+	//public List<Address> getAddress() {
+		//return address;
+	//}
 
-	public void setAddress(List<Address> address) {
-		this.address = address;
-	}
+	//public void setAddress(List<Address> address) {
+		//this.address = address;
+	//}
 
 	public int getRole() {
 		return role;
@@ -110,7 +110,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [uid=" + uid + ", fname=" + fname + ", lname=" + lname + ", phone=" + phone + ", email=" + email
-				+ ", password=" + password + ", address=" + address + ", role=" + role + "]";
+				+ ", password=" + password +  ", role=" + role + "]";
 	}
 
 

@@ -8,7 +8,8 @@ public interface UserService {
 	
 	public List<User> findAllUser();
 	public String addUser(User u);
+	public User updateUser(User u);
 	public User getUser(String password,String email);
-
+	public User getDetails(int id);
 
 }
