@@ -28,6 +28,8 @@ import SsiLogin from './components/pages/SSI/SsiLogin';
 import SsiLoginHome from './components/pages/SSI/SsiLoginHome';
 import SsiRequestList from './components/pages/SSI/SsiRequestList';
 import SsiAcceptRejectList from './components/pages/SSI/SsiAcceptRejectList';
+import EditUser from './components/pages/User/EditUser';
+import LoginLayout from './components/pages/Home/LoginLayout';
 
 
 function App() {
@@ -37,35 +39,42 @@ function App() {
    <Router>    
     <Routes>
     <Route  path="/" element={<Layout></Layout>}>
-    <Route index element={<Home></Home>}></Route>
-    <Route path="/about" element={<AboutUs></AboutUs>}></Route>
-    <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
+        <Route index element={<Home></Home>}></Route>
+        <Route path="/about" element={<AboutUs></AboutUs>}></Route>
+        <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
 
-    <Route path="/userregister" element={<UserRegister></UserRegister>}></Route>
-    <Route path="/userlogin" element={<UserLogin></UserLogin>}></Route>
-    <Route path="/userlogin/home" element={<UserLoginHome></UserLoginHome>}></Route>
-    <Route path="/userlogin/ngolist" element={<NgoList></NgoList>}></Route>
-    <Route path="/userlogin/donate" element={<DonateForm></DonateForm>}></Route>
-    <Route path="/userlogin/requestlist" element={<RequestList></RequestList>}></Route>
-    <Route path="/userlogin/acceptedlist" element={<AcceptedList></AcceptedList>}></Route>
-    <Route path="/userlogin/fooddetailsngo" element={<FoodDetails></FoodDetails>}></Route>
-    <Route path="/userlogin/fooddetailsssi" element={<FoodDetailsSsi></FoodDetailsSsi>}></Route>
-    <Route path="/userlogin/ssilist" element={<SsiList></SsiList>}></Route>
+        <Route path="/userregister" element={<UserRegister></UserRegister>}></Route>
+        <Route path="/userlogin" element={<UserLogin></UserLogin>}></Route>
 
-    <Route path="/ngoregister" element={<NgoRegister></NgoRegister>}></Route>
-    <Route path="/ngologin" element={<NgoLogin></NgoLogin>}></Route>
-    <Route path="/ngologin/home" element={<NgoLoginHome></NgoLoginHome>}></Route>
-    <Route path="/ngologin/requestlist" element={<NgoRequestList></NgoRequestList>}></Route>
-    <Route path="/ngologin/acceptrejectlist" element={<NgoAcceptRejectList></NgoAcceptRejectList>}></Route>
-    
+        <Route path="/ngoregister" element={<NgoRegister></NgoRegister>}></Route>
+        <Route path="/ngologin" element={<NgoLogin></NgoLogin>}></Route>
 
-    <Route path="/ssiregister" element={<SsiRegister></SsiRegister>}></Route>
-    <Route path="/ssilogin" element={<SsiLogin></SsiLogin>}></Route>
-    <Route path="/ssilogin/home" element={<SsiLoginHome></SsiLoginHome>}></Route>
-    <Route path="/ssilogin/requestlist" element={<SsiRequestList></SsiRequestList>}></Route>
-    <Route path="/ssilogin/acceptrejectlist" element={<SsiAcceptRejectList></SsiAcceptRejectList>}></Route>
-
+        <Route path="/ssiregister" element={<SsiRegister></SsiRegister>}></Route>
+        <Route path="/ssilogin" element={<SsiLogin></SsiLogin>}></Route>
     </Route>
+    
+    <Route  path="/" element={<LoginLayout/>}>
+          <Route path="/userlogin/home" element={<UserLoginHome></UserLoginHome>}></Route>
+          <Route path="/userlogin/editprofile" element={<EditUser/>}></Route>
+          <Route path="/userlogin/ngolist" element={<NgoList></NgoList>}></Route>
+          <Route path="/userlogin/donate" element={<DonateForm></DonateForm>}></Route>
+          <Route path="/userlogin/requestlist" element={<RequestList></RequestList>}></Route>
+          <Route path="/userlogin/acceptedlist" element={<AcceptedList></AcceptedList>}></Route>
+          <Route path="/userlogin/fooddetailsngo" element={<FoodDetails></FoodDetails>}></Route>
+          <Route path="/userlogin/fooddetailsssi" element={<FoodDetailsSsi></FoodDetailsSsi>}></Route>
+          <Route path="/userlogin/ssilist" element={<SsiList></SsiList>}></Route>
+
+        
+          <Route path="/ngologin/home" element={<NgoLoginHome></NgoLoginHome>}></Route>
+          <Route path="/ngologin/requestlist" element={<NgoRequestList></NgoRequestList>}></Route>
+          <Route path="/ngologin/acceptrejectlist" element={<NgoAcceptRejectList></NgoAcceptRejectList>}></Route>
+          
+
+          <Route path="/ssilogin/home" element={<SsiLoginHome></SsiLoginHome>}></Route>
+          <Route path="/ssilogin/requestlist" element={<SsiRequestList></SsiRequestList>}></Route>
+          <Route path="/ssilogin/acceptrejectlist" element={<SsiAcceptRejectList></SsiAcceptRejectList>}></Route>
+    </Route>
+
     </Routes>
       </Router>
       
