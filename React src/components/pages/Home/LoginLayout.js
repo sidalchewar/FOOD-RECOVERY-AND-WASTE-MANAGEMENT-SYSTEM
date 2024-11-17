@@ -2,10 +2,11 @@ import React from 'react';
 import { Outlet } from 'react-router';
 import Header from '../../inc/Header';
 import Footer from '../../inc/Footer';
-function Layout() {
+import LoginHeader from '../../inc/LoginHeader';
+function LoginLayout() {
     return (
         <div>
-            <Header/>
+            <LoginHeader/>
             <div>
                 <Outlet></Outlet>
             </div>
@@ -14,4 +15,4 @@ function Layout() {
     );
 }
 
-export default Layout;
+export default LoginLayout;

@@ -34,15 +34,14 @@ function UserRegister() {
           phone:phone1,
           email:email1,
           password:pass1,
-          role:role1 ,
-          address:[{
-          aid:0,
-          street:street1,
-          city:city1,
-          dist:dist1,
-          state:state1,
-          pin:pin1}]
-          
+          role:role1
+          // address:[{
+          // aid:0,
+          // street:street1,
+          // city:city1,
+          // dist:dist1,
+          // state:state1,
+          // pin:pin1}]
           }    
         
         // console.log("sid")
@@ -52,11 +51,13 @@ function UserRegister() {
           setRes(response.data);
           console.log(res)
           alert(response.data)
-
+          window.location.reload();
         }).catch(()=>
         {
           alert("Not Registered")
+          window.location.reload();
         })
+
       }
       else{
         alert("Please Enter Correct Password")
@@ -66,7 +67,7 @@ function UserRegister() {
     return (
      <>
       <section class="h-100 h-custom gradient-custom-2">
-     <center><h1 style={{color:"blue",paddingBottom:"10px"}}><marquee width="80%" direction="left" height="50px">
+     {/* <center><h1 style={{color:"blue",paddingBottom:"10px"}}><marquee width="80%" direction="left" height="50px">
      <font color="#753422">REGISTER HERE!!</font>
             {/* <font color="#252A34">e</font>
             <font color="#753422">N</font>
@@ -77,24 +78,24 @@ function UserRegister() {
             <font color="#0F52BA">N</font>
             <font color="#66CC66">O</font>
             <font color="#FF9966">W</font>
-            <font color="#FFCCCC">:)</font> */}
-     </marquee></h1></center>
- <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12">
-        <div class="card card-registration card-registration-2" style={{borderRadius: "15px"}}>
+            <font color="#FFCCCC">:)</font> 
+     </marquee></h1></center> */}
+ <div class="container py-5 h-100" >
+    <div class="row d-flex justify-content-center align-items-center h-100" style={{marginBottom: "-10px" , marginTop : "-50px"}}>
+      <div class="col-6" style={{marginTop :"20px" , marginBottom : "-15px"}}>
+        <div class="card card-registration card-registration-2" style={{borderRadius: "20px"}}>
           <div class="card-body p-0">
-            <div class="row g-0">
-            <div class="col-lg-6">
+            <div class="row g-0" style={{marginTop: "-40px"}}>
+            <div class="col-lg-12 ">
                 <div class="p-5">
                   <h3 class="fw-normal mb-5" style={{color:"navy"}}>Registration  for user</h3>
 
-                 <div class="row">
-                    <div class="col-md-6 mb-4 pb-2">
+                 <div class="row" style={{marginBottom: "-10px" , marginTop: "-30px"}}>
+                    <div class="col-md-6 mb-4 pb-2" >
 
                       <div class="form-outline">
                       <label class="form-label" for="form3Examplev2">First name</label>
-                        <input type="text" id="form3Examplev2" class="form-control form-control-lg" onBlur={(e)=>fname1=e.target.value} />
+                        <input required type="text" id="form3Examplev2" class="form-control form-control-lg" onBlur={(e)=>fname1=e.target.value} />
                         
                       </div>
 
@@ -110,7 +111,7 @@ function UserRegister() {
                     </div>
                   </div>
 
-                  <div class="row">
+                  <div class="row" style={{marginBottom: "-10px"}}>
                     <div class="col-md-6 mb-4 pb-2">
 
                       <div class="form-outline">
@@ -131,7 +132,7 @@ function UserRegister() {
                     </div>
                   </div>
 
-                  <div class="row">
+                  <div class="row" style={{marginBottom: "-10px"}}>
                     <div class="col-md-6 mb-4 pb-2">
 
                       <div class="form-outline">
@@ -151,7 +152,7 @@ function UserRegister() {
 
                     </div>
                   </div>
-                  <div class="row">
+                  <div class="row" style={{marginBottom: "-30px"}}>
 
                   <div class="mb-4 pb-2">
                   <label for="cars"><b>Role Of User :</b></label><br/>
@@ -165,75 +166,22 @@ function UserRegister() {
                   </select>
                   </div>
                   </div>
-
-
-                 </div>
-              </div>
-              <div class="col-lg-6 bg-indigo text-white">
-                <div class="p-5">
-                  <h3 class="fw-normal mb-5">Address Details</h3>
-
-                  <div class="mb-4 pb-2">
-                    <div class="form-outline form-white">
-                    <label class="form-label" for="form3Examplea2">Street</label>
-                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" onBlur={(e)=>street1=e.target.value}/>
-                     
-                    </div>
+                  <div class="container">
+                <div class="row">
+                  <div class="col text-center mt-3" style={{marginBottom : "-20px"}}>
+                    <button class="btn" style={{borderColor :"black" , width :"200px" , backgroundColor : "green" , color : "white"}} onClick={create}> Register</button>
                   </div>
-
-                  <div class="mb-4 pb-2">
-                    <div class="form-outline form-white">
-                    <label class="form-label" for="form3Examplea3">City</label>
-                      <input type="text" id="form3Examplea3" class="form-control form-control-lg" onBlur={(e)=>city1=e.target.value}/>
-                     
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-5 mb-4 pb-2">
-
-                      <div class="form-outline form-white">
-                      <label class="form-label" for="form3Examplea4">District</label>
-                        <input type="text" id="form3Examplea4" class="form-control form-control-lg " onBlur={(e)=>dist1=e.target.value} />
-                        
-                      </div>
-
-                    </div>
-                    <div class="col-md-7 mb-4 pb-2">
-
-                      <div class="form-outline form-white">
-                      <label class="form-label" for="form3Examplea5">State</label>
-                        <input type="text" id="form3Examplea5" class="form-control form-control-lg"onBlur={(e)=>state1=e.target.value} />
-                        
-                      </div>
-
-                    </div>
-                  </div>
-
-                  <div class="mb-4 pb-2">
-                    <div class="form-outline form-white">
-                    <label class="form-label" for="form3Examplea6">Pin code</label>
-                      <input type="text" id="form3Examplea6" class="form-control form-control-lg" onBlur={(e)=>pin1=e.target.value} />
-                      
-                    </div>
-                  </div>
-
-                  <div class="form-check d-flex justify-content-start mb-4 pb-3">
-                    <input class="form-check-input me-3" type="checkbox" value="" id="form2Example3c" />
-                    <label class="form-check-label text-white" for="form2Example3">
-                      I do accept the <a href="#!" class="text-white"><u>Terms and Conditions</u></a> of your
-                      site.
-                    </label>
-                  </div>
-
-                  <button type="button" class="btn btn-light btn-lg"
-                    data-mdb-ripple-color="dark" onClick={create}>Register</button>
-
                 </div>
               </div>
+                 </div>
+              </div>
+              
             </div>
+            
           </div>
+          
         </div>
+        
       </div>
     </div>
   </div>

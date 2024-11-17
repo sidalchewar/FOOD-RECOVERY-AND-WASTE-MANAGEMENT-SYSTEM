@@ -24,6 +24,18 @@
   color: white;
 }
 
+.about-me {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+ .about-me-show-all
+ {
+  -webkit-line-clamp: None;
+ }
+
 .App-link {
   color: #61dafb;
 }
@@ -193,3 +205,4 @@
   }
 }
   }
+

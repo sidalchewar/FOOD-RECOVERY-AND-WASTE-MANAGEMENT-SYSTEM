@@ -19,13 +19,15 @@ function UserLogin(props) {
     {
         if(username!="" && password!="")
         {
-        axios.post("http://localhost:8000/user/login/"+username+"/"+password,Config).then((response)=>
+        axios.get("http://localhost:8000/user/login/"+username+"/"+password,Config).then((response)=>
         {
             //let [user,setUser]=response.data
             let user=response.data;
             console.log(user.lname);
             // setMsg(user.lname);
             let name=user.fname;
+            localStorage.setItem('token',JSON.stringify(user));
+           
             if(user!=null)
             {
           //  nav("/home",{state:{name:"siddhant"}});
@@ -64,7 +66,7 @@ function UserLogin(props) {
               <div class="card-body p-4 p-lg-5 text-black">
 
                 <form>
-
+            
                   <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style={{color: "#ff6219;"}}></i>
                     <span class="h1 fw-bold mb-0">User LogIn</span>

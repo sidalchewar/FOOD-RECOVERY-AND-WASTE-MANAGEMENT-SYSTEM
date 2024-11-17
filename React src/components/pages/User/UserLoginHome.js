@@ -1,27 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-
+import Person from '../../images/personImg.png';
 import SelectionPage from './SelectionPage';
+import UserLogin from './UserLogin';
 
 function UserLoginHome() {
-    let user=useLocation();
+
     let nav=useNavigate();
-    let us=user.state.fname+" "+user.state.lname;
-    // useEffect(()=>
-    // {
-    //      setUser(user.state.fname);
-    // })
+    let [userAction , setUserAction] =useState(<></>);
+    let [actionFlag , setActionFlag] =useState();
+    let [checkToken , serCheckToken] =useState(localStorage.getItem('token'));
+    let loc=useLocation()
+    
+        if(checkToken==null)
+        {
+            return(
+            <UserLogin/>
+            )
+        }
+       else{
+        let user=JSON.parse(localStorage.getItem('token'))
+        let u=loc.state
+    
     return (
         <>
+        
         <div style={{paddingBottom:"50px"}}>
-            Welcome {us}
-            <button style={{float:"right",marginBlock:"10px",marginRight:"50px",backgroundColor:"red"}} onClick={()=>nav("/userlogin")}>Logout</button><br/><br/>
+            
+           {/* <br/><br/><br/>
+
             <button style={{float:"right",marginBlock:"10px",marginRight:"50px",backgroundColor:"pink"}} onClick={()=>nav("/userlogin/acceptedlist",{state:user.state})}>Accepted List</button>
-            <button style={{float:"right",marginBlock:"10px",marginRight:"50px",backgroundColor:"pink"}} onClick={()=>nav("/userlogin/requestlist",{state:user.state})}>Request List</button>
+            <button style={{float:"right",marginBlock:"10px",marginRight:"50px",backgroundColor:"pink"}} onClick={()=>nav("/userlogin/requestlist",{state:user.state})}>Request List</button> */}
         </div>  
           <SelectionPage state={user.state}></SelectionPage>
         </>
     );
+            }
 }
 
 export default UserLoginHome;
