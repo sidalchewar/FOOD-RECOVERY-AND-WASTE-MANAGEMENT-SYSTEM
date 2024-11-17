@@ -47,4 +47,16 @@ public class UserServiceImpl implements UserService
 		}
 		return user;
 	}
+
+	@Override
+	public User getDetails(int id) {
+		// TODO Auto-generated method stub
+		return dao.getById(id);
+	}
+
+	@Override
+	public User updateUser(User u) {
+		System.out.println(u+"*********");
+		return dao.save(u);
+	}
 }
